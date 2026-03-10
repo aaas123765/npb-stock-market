@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPB株式市場 公式ページ</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --blue: #2563eb;
+      --green: #16a34a;
+      --red: #dc2626;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 180px);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 56px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 56px);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 14px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(15px, 2.5vw, 19px);
+      line-height: 1.8;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: block;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      text-align: center;
+      padding: 18px 14px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.96; }
+    .btn.blue { background: var(--blue); }
+    .btn.green { background: var(--green); }
+    .btn.red { background: var(--red); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .status-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .status-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: #f8fafc;
+    }
+
+    .status-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .status-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item:first-child { border-top: none; padding-top: 0; }
+
+    .faq-q {
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 860px) {
+      .grid, .section-grid, .button-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="badge">ミルスタチャンネル企画</div>
+      <h1>NPB株式市場</h1>
+      <p class="subtitle">
+        プロ野球選手を株のように売買する視聴者参加型ゲーム。<br>
+        成績で株価が毎日変動。上がると思う選手を見つけて、資産を増やそう。
+      </p>
+
+      <div class="button-grid">
+        <a class="btn blue" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">参加登録</a>
+        <a class="btn green" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank" rel="noopener noreferrer">株の売買はこちら</a>
+        <a class="btn red" href="https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=329580722#gid=329580722" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>このページでできること</h2>
+        <ul>
+          <li>参加登録フォームにすぐ移動</li>
+          <li>取引フォームにすぐ移動</li>
+          <li>最新ランキングをすぐ確認</li>
+          <li>ルールと注意事項をまとめて確認</li>
+        </ul>
+        <div class="note">概要欄にはこのページのURLひとつだけ貼ればOKです。</div>
+      </div>
+
+      <div class="card">
+        <h2>現在の状況</h2>
+        <div class="status-list">
+          <div class="status-item">
+            <div class="status-label">参加者数</div>
+            <div class="status-value">準備中</div>
+          </div>
+          <div class="status-item">
+            <div class="status-label">取引状況</div>
+            <div class="status-value">毎日更新</div>
+          </div>
+          <div class="status-item">
+            <div class="status-label">最終更新</div>
+            <div class="status-value">試合終了後</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="card">
+        <h2>基本ルール</h2>
+        <ul>
+          <li>初期資産は1000ポイント</li>
+          <li>選手を株のように売買</li>
+          <li>株価は試合成績によって変動</li>
+          <li>ランキング上位者には賞品あり</li>
+          <li>詳細は動画・フォーム内の説明を確認</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>注意事項</h2>
+        <ul>
+          <li>この企画は実際の株式投資ではありません</li>
+          <li>参加は無料です</li>
+          <li>不正行為が確認された場合はランキング対象外になります</li>
+          <li>パスワード紛失時は公式Xへお問い合わせください</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2>よくある質問</h2>
+      <div class="faq-item">
+        <div class="faq-q">Q. どこから参加すればいいですか？</div>
+        <div class="faq-a">A. このページ上部の「参加登録」ボタンから登録してください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 取引はどこで行いますか？</div>
+        <div class="faq-a">A. 「株の売買はこちら」ボタンから取引フォームへ移動できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. ランキングはどこで見られますか？</div>
+        <div class="faq-a">A. 「ランキングを見る」ボタンから最新のランキングを確認できます。</div>
+      </div>
+    </section>
+
+    <div class="footer">
+      NPB株式市場 / ミルスタチャンネル
+    </div>
+  </div>
+</body>
+</html>
