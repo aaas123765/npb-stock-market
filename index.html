@@ -4,143 +4,729 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NPB株式市場</title>
+  <meta name="description" content="プロ野球選手を株のように売買して競う参加型企画、NPB株式市場。登録・取引・ランキング確認はこちら。">
 
   <style>
+    :root {
+      --bg-1: #081120;
+      --bg-2: #0f1c31;
+      --panel: rgba(15, 23, 42, 0.78);
+      --panel-strong: rgba(30, 41, 59, 0.92);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --subtle: #94a3b8;
+      --blue: #2563eb;
+      --blue-hover: #1d4ed8;
+      --slate: #475569;
+      --slate-hover: #334155;
+      --gold: #fbbf24;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --maxw: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
+      font-family: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 30%),
+        radial-gradient(circle at top right, rgba(251, 191, 36, 0.16), transparent 22%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
       text-align: center;
     }
 
     .container {
-      max-width: 900px;
+      width: min(var(--maxw), calc(100% - 32px));
       margin: 0 auto;
-      padding: 40px 20px;
+    }
+
+    .hero {
+      position: relative;
+      padding: 32px 0 24px;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      background: rgba(37, 99, 235, 0.18);
+      top: -70px;
+      left: -60px;
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      background: rgba(251, 191, 36, 0.12);
+      right: -40px;
+      top: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), #60a5fa);
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--subtle);
+      margin: 2px 0 0;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
+    }
+
+    .mini-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .mini-btn:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-card {
+      margin-top: 20px;
+      padding: 56px 28px 34px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(30,41,59,0.85), rgba(15,23,42,0.92));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(37,99,235,0.10), transparent 45%),
+        linear-gradient(300deg, rgba(251,191,36,0.08), transparent 35%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.14);
+      color: #dbeafe;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
     }
 
-    .sub {
-      font-size: 18px;
-      color: #cbd5e1;
-      margin-bottom: 30px;
+    .hero-lead {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 18px auto 0;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.9;
+      color: var(--muted);
     }
 
-    .box {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 24px;
-    }
-
-    p {
-      line-height: 1.8;
-    }
-
-    .btn-area {
-      margin-top: 30px;
+    .hero-cta {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
     }
 
     .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 24px;
-      border-radius: 12px;
-      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 180px;
+      padding: 15px 24px;
+      border-radius: 14px;
+      border: none;
       color: white;
-      background: #2563eb;
-      font-weight: bold;
-      transition: 0.2s;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 3;
     }
 
     .btn:hover {
-      background: #1d4ed8;
+      transform: translateY(-2px);
     }
 
-    .sub-btn {
-      background: #475569;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #3b82f6);
     }
 
-    .sub-btn:hover {
-      background: #334155;
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--blue-hover), #2563eb);
     }
 
-    .note {
-      margin-top: 30px;
+    .btn-secondary {
+      background: linear-gradient(135deg, #475569, #64748b);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(135deg, var(--slate-hover), #475569);
+    }
+
+    .btn-accent {
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+    }
+
+    .btn-accent:hover {
+      background: linear-gradient(135deg, #0f766e, #0d9488);
+    }
+
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      padding: 18px 14px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--subtle);
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 18px 0 54px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 38px);
+      margin: 0 0 12px;
+    }
+
+    .section-sub {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      text-align: left;
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 16px;
+      background: rgba(37,99,235,0.16);
+      color: #dbeafe;
+      border: 1px solid rgba(96,165,250,0.18);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.9;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .step {
+      padding: 26px 22px 22px;
+      border-radius: var(--radius-xl);
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), #f59e0b);
+      color: #1f2937;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 15px;
+    }
+
+    .cta-panel {
+      margin-top: 12px;
+      padding: 30px 24px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(37,99,235,0.14), rgba(20,184,166,0.10)),
+        rgba(15,23,42,0.85);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-title {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 4vw, 34px);
+    }
+
+    .cta-text {
+      margin: 0 auto 24px;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .ranking-preview {
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .ranking-title {
+      margin: 0 0 16px;
+      font-size: 24px;
+    }
+
+    .ranking-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .rank-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: left;
+    }
+
+    .rank-badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f172a;
+      background: #fbbf24;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .rank-name {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .rank-value {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 0 0 42px;
+    }
+
+    .footer-box {
+      padding: 20px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.55);
+      color: var(--subtle);
       font-size: 14px;
-      color: #94a3b8;
+      line-height: 1.8;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 30px;
+    @media (max-width: 920px) {
+      .grid-3,
+      .steps,
+      .hero-stats,
+      .ranking-grid {
+        grid-template-columns: 1fr;
       }
 
-      .btn {
-        display: block;
-        width: 80%;
-        margin: 10px auto;
+      .topbar {
+        flex-direction: column;
+      }
+
+      .brand {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 18px;
+      }
+
+      .hero-card {
+        padding: 40px 18px 24px;
+        border-radius: 24px;
+      }
+
+      .container {
+        width: min(var(--maxw), calc(100% - 20px));
+      }
+
+      .card,
+      .step,
+      .cta-panel,
+      .ranking-preview {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .btn,
+      .mini-btn {
+        width: 100%;
+      }
+
+      .hero-cta,
+      .top-links {
+        flex-direction: column;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
+  <header class="hero">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-mark">NPB</div>
+          <div>
+            <p class="brand-title">NPB株式市場</p>
+            <p class="brand-sub">Baseball × Stock Game Project</p>
+          </div>
+        </div>
 
-    <h1>NPB株式市場</h1>
-    <p class="sub">プロ野球選手を“株”のように売買して競う参加型企画</p>
+        <div class="top-links">
+          <button class="mini-btn" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register')">登録ページ</button>
+          <button class="mini-btn" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec')">取引ページ</button>
+          <button class="mini-btn" onclick="openExternal('https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0')">ランキング</button>
+        </div>
+      </div>
 
-    <div class="box">
-      <h2>この企画について</h2>
-      <p>
-        選手の活躍によって株価が変動。<br>
-        ポイントを使って売買し、資産を増やすゲームです。
-      </p>
+      <div class="hero-card">
+        <div class="badge">参加型プロ野球ゲーム企画</div>
+        <h1>選手の活躍を読んで、<br>資産を増やせ。</h1>
+        <p class="hero-lead">
+          NPB株式市場は、プロ野球選手を“株”のように売買して競う参加型企画です。
+          選手の活躍に応じて株価が変動し、参加者はポイントを使って売買。
+          野球を見る楽しさに、予想と戦略の面白さを掛け合わせたゲームです。
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register')">今すぐ参加する</button>
+          <button class="btn btn-secondary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec')">取引ページへ</button>
+          <button class="btn btn-accent" onclick="openExternal('https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0')">ランキングを見る</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">01</div>
+            <div class="stat-label">登録して参加<br>すぐにスタート可能</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">02</div>
+            <div class="stat-label">選手の活躍で<br>株価が変動</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">03</div>
+            <div class="stat-label">ランキング上位を<br>目指して競う</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <div class="box">
-      <h2>参加方法</h2>
-      <p>
-        ① 登録ページから参加<br>
-        ② 初期ポイントを受け取る<br>
-        ③ 取引ページで売買開始！
-      </p>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">この企画の魅力</h2>
+        <p class="section-sub">
+          野球の試合結果を見るだけでなく、
+          「誰を買うか」「いつ売るか」という判断まで楽しめるのがこの企画の面白さです。
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">01</div>
+            <h3>成績が価値になる</h3>
+            <p>
+              選手の結果がそのまま株価に反映。
+              試合を見る視点が変わり、毎日のプロ野球がもっと面白くなります。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">02</div>
+            <h3>予想と駆け引き</h3>
+            <p>
+              好調選手に乗るか、割安な選手を狙うか。
+              自分だけの戦略で上位を目指せます。
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">03</div>
+            <h3>参加型で盛り上がる</h3>
+            <p>
+              登録・取引・ランキング確認までを一本化。
+              動画や企画との連動で継続的に楽しめます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">参加の流れ</h2>
+        <p class="section-sub">
+          初めてでも大丈夫です。必要なのは3ステップだけです。
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>登録する</h3>
+            <p>
+              まずは登録ページから参加。
+              ユーザー情報を入力して企画への参加準備を完了します。
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>取引する</h3>
+            <p>
+              取引ページから好きな選手を売買。
+              今後伸びそうな選手を見極めて資産を増やしましょう。
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>順位を確認する</h3>
+            <p>
+              スプレッドシートでランキングをチェック。
+              自分の現在地を見ながら次の一手を考えられます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="ranking-preview">
+          <h2 class="ranking-title">ランキング上位イメージ</h2>
+          <div class="ranking-grid">
+            <div class="rank-card">
+              <div class="rank-badge">1位</div>
+              <div class="rank-name">TOP PLAYER</div>
+              <div class="rank-value">ランキングページで最新順位を確認</div>
+            </div>
+            <div class="rank-card">
+              <div class="rank-badge">2位</div>
+              <div class="rank-name">CHALLENGER</div>
+              <div class="rank-value">注目参加者が上位を争う</div>
+            </div>
+            <div class="rank-card">
+              <div class="rank-badge">3位</div>
+              <div class="rank-name">RISING</div>
+              <div class="rank-value">次の一手で順位変動の可能性あり</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <h2 class="cta-title">今すぐ参加して、上位を狙おう。</h2>
+          <p class="cta-text">
+            登録後すぐに取引を始められます。
+            推し選手で勝負するもよし、データ重視で戦うもよし。
+            あなたの読みと戦略で、NPB株式市場を勝ち抜いてください。
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn btn-primary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register')">登録ページへ</button>
+            <button class="btn btn-secondary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec')">取引ページへ</button>
+            <button class="btn btn-accent" onclick="openExternal('https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0')">ランキングへ</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-box">
+        ※ すべて外部ページに移動します。<br>
+        登録・取引・ランキングの最新情報は各リンク先で確認してください。
+      </div>
     </div>
+  </footer>
 
-    <p style="margin-top:30px; font-size:18px;">
-      ▼ 今すぐ参加してランキング上位を狙え！
-    </p>
-
-    <div class="btn-area">
-      <a href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" class="btn" target="_blank">
-        今すぐ参加
-      </a>
-
-      <a href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" class="btn sub-btn" target="_blank">
-        売買する
-      </a>
-
-      <a href="https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0" class="btn sub-btn" target="_blank">
-        ランキングを見る
-      </a>
-    </div>
-
-    <p class="note">
-      ※ 外部ページに移動します
-    </p>
-
-  </div>
+  <script>
+    function openExternal(url) {
+      window.open(url, "_blank");
+    }
+  </script>
 </body>
 </html>
