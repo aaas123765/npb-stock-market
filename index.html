@@ -8,39 +8,36 @@
 
   <style>
     :root {
-      --bg1: #f5f9ff;
-      --bg2: #edf5ff;
-      --bg3: #ffffff;
+      --bg1: #fff7e8;
+      --bg2: #fffaf2;
+      --bg3: #fff;
+      --text: #1f2937;
+      --muted: #374151;
+      --subtle: #6b7280;
+      --line: rgba(120, 113, 108, 0.18);
 
-      --panel: rgba(255, 255, 255, 0.94);
-      --panel-strong: rgba(255, 255, 255, 0.98);
-      --line: rgba(148, 163, 184, 0.25);
-
-      --text: #0f172a;
-      --muted: #334155;
-      --subtle: #64748b;
-
-      --blue: #2563eb;
+      --red1: #ff2a2a;
+      --red2: #ff7a00;
+      --gold1: #ffd54a;
+      --gold2: #ffb300;
+      --blue1: #2563eb;
       --blue2: #60a5fa;
-      --green: #10b981;
+      --green1: #10b981;
       --green2: #34d399;
-      --orange: #f59e0b;
-      --orange2: #fbbf24;
-      --red: #ef4444;
-      --red2: #f97316;
-      --pink: #ec4899;
+      --pink1: #ec4899;
       --pink2: #f9a8d4;
-      --dark: #111827;
-      --dark2: #4b5563;
+      --dark1: #111827;
+      --dark2: #374151;
 
-      --shadow: 0 18px 40px rgba(37, 99, 235, 0.10);
-      --shadow-strong: 0 20px 50px rgba(15, 23, 42, 0.14);
+      --panel: rgba(255,255,255,0.92);
+      --panel-strong: rgba(255,255,255,0.97);
+      --shadow: 0 14px 36px rgba(0,0,0,0.10);
+      --shadow-strong: 0 18px 46px rgba(0,0,0,0.16);
 
+      --maxw: 1180px;
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 14px;
-
-      --maxw: 1160px;
     }
 
     * {
@@ -53,12 +50,13 @@
 
     body {
       margin: 0;
-      font-family: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       color: var(--text);
+      font-family: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(251,191,36,0.10), transparent 24%),
-        linear-gradient(180deg, var(--bg1), var(--bg2) 48%, var(--bg3));
+        radial-gradient(circle at top left, rgba(255,215,74,0.20), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,122,0,0.14), transparent 20%),
+        radial-gradient(circle at center top, rgba(255,42,42,0.08), transparent 30%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 42%, var(--bg3));
       min-height: 100vh;
       text-align: center;
     }
@@ -69,24 +67,60 @@
     }
 
     .container {
-      width: min(var(--maxw), calc(100% - 28px));
+      width: min(var(--maxw), calc(100% - 24px));
       margin: 0 auto;
     }
 
+    .blink-banner-wrap {
+      padding: 14px 0 0;
+    }
+
+    .blink-banner {
+      display: inline-block;
+      width: min(100%, 980px);
+      padding: 14px 18px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 900;
+      font-size: clamp(18px, 3vw, 32px);
+      letter-spacing: 0.04em;
+      background:
+        linear-gradient(90deg, #ff0000, #ff7a00, #ff0000);
+      border: 4px solid #ffe082;
+      box-shadow:
+        0 0 0 4px rgba(255,255,255,0.7),
+        0 10px 30px rgba(255,80,0,0.28);
+      text-shadow:
+        0 2px 0 rgba(0,0,0,0.22),
+        0 0 16px rgba(255,255,255,0.30);
+      animation: blinkFlash 1s infinite alternate;
+    }
+
+    @keyframes blinkFlash {
+      0% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+      100% {
+        transform: scale(1.015);
+        filter: brightness(1.16);
+      }
+    }
+
     .hero {
-      padding: 24px 0 18px;
+      padding: 12px 0 18px;
     }
 
     .topbar {
+      margin-top: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
       padding: 14px 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(10px);
-      border-radius: 18px;
+      border: 2px solid rgba(255,179,0,0.35);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,249,235,0.96));
+      border-radius: 20px;
       box-shadow: var(--shadow);
     }
 
@@ -98,27 +132,27 @@
     }
 
     .brand-mark {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 16px;
       display: grid;
       place-items: center;
       color: white;
+      font-size: 22px;
       font-weight: 900;
-      font-size: 20px;
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
-      box-shadow: 0 10px 24px rgba(37,99,235,0.18);
+      background: linear-gradient(135deg, #ff2a2a, #ff7a00, #ffcf33);
+      box-shadow: 0 10px 24px rgba(255,122,0,0.24);
       flex-shrink: 0;
     }
 
     .brand-title {
       margin: 0;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 900;
     }
 
     .brand-sub {
-      margin: 2px 0 0;
+      margin: 3px 0 0;
       font-size: 12px;
       color: var(--subtle);
     }
@@ -131,31 +165,30 @@
     }
 
     .mini-link {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.96);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-radius: 999px;
-      transition: 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #7c2d12;
+      background: linear-gradient(180deg, #fff, #fff3d8);
+      border: 2px solid rgba(255,179,0,0.30);
+      box-shadow: 0 6px 14px rgba(255,179,0,0.10);
+      transition: 0.18s ease;
     }
 
     .mini-link:hover {
-      transform: translateY(-1px);
-      background: #ffffff;
-      color: var(--text);
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, #fffefb, #ffe9b4);
     }
 
     .hero-card {
       margin-top: 18px;
-      padding: 42px 22px 28px;
-      border-radius: 30px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(246,250,255,0.98));
+      padding: 34px 18px 26px;
+      border-radius: 32px;
+      border: 2px solid rgba(255,179,0,0.28);
+      background:
+        radial-gradient(circle at top center, rgba(255,235,160,0.22), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,248,236,0.98));
       box-shadow: var(--shadow-strong);
       overflow: hidden;
     }
@@ -164,69 +197,99 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      padding: 9px 15px;
       border-radius: 999px;
-      background: #dbeafe;
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
+      background: linear-gradient(90deg, #ffe082, #ffd54f);
+      border: 2px solid #ffb300;
+      color: #7c2d12;
       font-size: 13px;
       font-weight: 900;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 6px 14px rgba(255,179,0,0.16);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(34px, 6vw, 62px);
+      font-size: clamp(34px, 6vw, 64px);
       line-height: 1.08;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      color: #7c2d12;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.7);
     }
 
     .hero-lead {
-      max-width: 800px;
-      margin: 18px auto 0;
+      max-width: 860px;
+      margin: 16px auto 0;
       font-size: clamp(16px, 2vw, 20px);
       line-height: 1.9;
       color: var(--muted);
-    }
-
-    .prize-box {
-      margin: 26px auto 0;
-      max-width: 960px;
-      border-radius: 24px;
-      padding: 24px 20px;
-      background: linear-gradient(135deg, #fff7ed, #fef3c7, #fff7ed);
-      border: 2px solid #f59e0b;
-      box-shadow: 0 16px 36px rgba(245,158,11,0.18);
-    }
-
-    .prize-title {
-      margin: 0 0 12px;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 900;
-      color: #b45309;
-    }
-
-    .prize-sub {
-      margin: 0 0 18px;
-      font-size: 16px;
-      line-height: 1.8;
-      color: #7c2d12;
       font-weight: 700;
     }
 
+    .prize-super-wrap {
+      margin-top: 26px;
+      border-radius: 26px;
+      padding: 22px 18px;
+      background:
+        linear-gradient(135deg, #ff0000, #ff5a00 28%, #ffcc33 55%, #ff6f00 78%, #ff0000);
+      border: 5px solid #fff3c4;
+      box-shadow:
+        0 0 0 4px rgba(255,183,77,0.35),
+        0 16px 42px rgba(255,90,0,0.30);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prize-super-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,0.35), transparent 10%),
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,0.25), transparent 10%),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.18), transparent 8%),
+        radial-gradient(circle at 75% 72%, rgba(255,255,255,0.18), transparent 8%);
+      pointer-events: none;
+    }
+
+    .prize-super-title {
+      position: relative;
+      margin: 0;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.08;
+      font-weight: 900;
+      color: #fff8d6;
+      letter-spacing: 0.02em;
+      text-shadow:
+        0 3px 0 #8b1e00,
+        0 6px 18px rgba(0,0,0,0.28);
+    }
+
+    .prize-super-sub {
+      position: relative;
+      margin: 12px auto 0;
+      max-width: 920px;
+      font-size: clamp(18px, 2.6vw, 26px);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      line-height: 1.6;
+    }
+
     .prize-grid {
+      position: relative;
       display: grid;
       grid-template-columns: 1.2fr 1fr 1fr;
       gap: 14px;
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
     .prize-card {
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(245,158,11,0.30);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,237,0.95));
+      border: 2px solid rgba(255,221,128,0.75);
       border-radius: 18px;
       padding: 18px 14px;
-      box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
     }
 
     .prize-rank {
@@ -241,6 +304,7 @@
       font-weight: 900;
       color: #dc2626;
       margin-bottom: 6px;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
     }
 
     .prize-note {
@@ -250,50 +314,79 @@
       font-weight: 700;
     }
 
-    .subscriber-note {
-      margin-top: 16px;
-      font-size: 15px;
+    .subscriber-mega {
+      position: relative;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fff, #fff6cf);
+      border: 3px dashed #ff9800;
+      box-shadow: 0 8px 20px rgba(255,179,0,0.12);
+    }
+
+    .subscriber-mega-title {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 4vw, 36px);
+      color: #c2410c;
+      font-weight: 900;
+      line-height: 1.4;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .subscriber-mega-text {
+      margin: 0;
+      font-size: 17px;
       color: #7c2d12;
-      line-height: 1.8;
       font-weight: 800;
+      line-height: 1.8;
     }
 
     .main-actions {
       display: grid;
-      grid-template-columns: repeat(2, minmax(260px, 360px));
+      grid-template-columns: repeat(2, minmax(260px, 380px));
       justify-content: center;
       gap: 18px;
-      margin-top: 26px;
+      margin-top: 28px;
     }
 
     .big-action {
       border: none;
-      border-radius: 18px;
-      padding: 22px 18px;
+      border-radius: 20px;
+      padding: 24px 18px;
       color: white;
-      cursor: pointer;
       font-weight: 900;
-      font-size: 24px;
+      font-size: 28px;
       line-height: 1.3;
-      box-shadow: 0 16px 30px rgba(15,23,42,0.12);
-      transition: transform 0.18s ease, opacity 0.18s ease;
+      box-shadow: 0 16px 34px rgba(15,23,42,0.14);
       display: inline-flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      transition: 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .big-action::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.28), transparent 18%),
+        radial-gradient(circle at 85% 18%, rgba(255,255,255,0.18), transparent 16%);
+      pointer-events: none;
     }
 
     .big-action:hover {
-      transform: translateY(-2px) scale(1.01);
-      opacity: 0.98;
+      transform: translateY(-3px) scale(1.01);
     }
 
     .big-register {
-      background: linear-gradient(135deg, var(--red), var(--red2));
+      background: linear-gradient(135deg, #ff0000, #ff5a00, #ff8a00);
     }
 
     .big-trade {
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      background: linear-gradient(135deg, #0057ff, #1d4ed8, #60a5fa);
     }
 
     .big-action small {
@@ -301,7 +394,7 @@
       margin-top: 8px;
       font-size: 14px;
       font-weight: 700;
-      opacity: 0.95;
+      opacity: 0.98;
     }
 
     .sub-actions {
@@ -316,13 +409,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 180px;
+      min-width: 200px;
       padding: 14px 20px;
       border: none;
       border-radius: 14px;
-      color: white;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 900;
       transition: 0.18s ease;
       box-shadow: 0 10px 24px rgba(15,23,42,0.10);
     }
@@ -332,12 +424,13 @@
     }
 
     .sub-green {
-      background: linear-gradient(135deg, var(--green), var(--green2));
+      background: linear-gradient(135deg, var(--green1), var(--green2));
+      color: white;
     }
 
     .sub-orange {
-      background: linear-gradient(135deg, var(--orange), var(--orange2));
-      color: #1f2937;
+      background: linear-gradient(135deg, #ffd54f, #ffb300);
+      color: #7c2d12;
     }
 
     .quick-nav {
@@ -351,43 +444,55 @@
       text-align: left;
       padding: 18px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,247,230,0.96));
+      border: 2px solid rgba(255,193,7,0.22);
       box-shadow: var(--shadow);
+      transition: 0.18s ease;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-2px);
     }
 
     .nav-card-number {
       display: inline-flex;
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      background: #dbeafe;
-      color: var(--blue);
+      background: linear-gradient(135deg, #ffcc33, #ff9800);
+      color: #7c2d12;
       font-weight: 900;
       margin-bottom: 12px;
+      box-shadow: 0 6px 14px rgba(255,152,0,0.14);
     }
 
     .nav-card h3 {
       margin: 0 0 8px;
       font-size: 20px;
+      font-weight: 900;
+      color: #7c2d12;
     }
 
     .nav-card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.8;
+      line-height: 1.75;
       font-size: 14px;
+      font-weight: 700;
     }
 
     .section {
-      padding: 18px 0 54px;
+      padding: 18px 0 56px;
     }
 
     .section-title {
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: clamp(30px, 4vw, 44px);
       margin: 0 0 12px;
+      color: #7c2d12;
+      font-weight: 900;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.75);
     }
 
     .section-sub {
@@ -396,37 +501,40 @@
       color: var(--muted);
       line-height: 1.8;
       font-size: 16px;
+      font-weight: 700;
     }
 
     .rule-box {
       padding: 26px;
       border-radius: 24px;
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,248,235,0.96));
+      border: 2px solid rgba(255,193,7,0.22);
       box-shadow: var(--shadow);
       text-align: left;
     }
 
     .rule-list {
       margin: 0;
-      padding-left: 20px;
+      padding-left: 22px;
       color: var(--muted);
       line-height: 2;
       font-size: 16px;
+      font-weight: 700;
     }
 
     .youtube-box {
       margin-top: 18px;
       padding: 20px;
       border-radius: 18px;
-      background: linear-gradient(135deg, #fee2e2, #fff7ed);
-      border: 1px solid #fecaca;
+      background: linear-gradient(135deg, #fff1f1, #fff7ed);
+      border: 2px solid #fecaca;
       text-align: left;
+      box-shadow: 0 8px 20px rgba(239,68,68,0.08);
     }
 
     .youtube-title {
       margin: 0 0 8px;
-      font-size: 20px;
+      font-size: 22px;
       color: #b91c1c;
       font-weight: 900;
     }
@@ -449,28 +557,31 @@
     .step {
       padding: 26px 22px 22px;
       border-radius: 24px;
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,249,255,0.95));
+      border: 2px solid rgba(96,165,250,0.18);
       text-align: left;
       box-shadow: var(--shadow);
     }
 
     .step-number {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       font-size: 16px;
       font-weight: 900;
-      background: linear-gradient(135deg, #93c5fd, #60a5fa);
+      background: linear-gradient(135deg, #60a5fa, #93c5fd);
       color: #0f172a;
       margin-bottom: 18px;
+      box-shadow: 0 6px 14px rgba(59,130,246,0.14);
     }
 
     .step h3 {
       margin: 0 0 10px;
       font-size: 21px;
+      font-weight: 900;
+      color: #1d4ed8;
     }
 
     .step p {
@@ -478,12 +589,13 @@
       color: var(--muted);
       line-height: 1.85;
       font-size: 15px;
+      font-weight: 700;
     }
 
     .events-wrap {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       max-width: 980px;
       margin: 0 auto;
     }
@@ -492,67 +604,89 @@
       width: 100%;
       text-align: left;
       border-radius: 18px;
-      padding: 18px 22px;
+      padding: 20px 24px;
       color: white;
-      cursor: pointer;
-      box-shadow: var(--shadow-strong);
-      transition: transform 0.18s ease, opacity 0.18s ease;
       position: relative;
       overflow: hidden;
       display: block;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+      border: 3px solid rgba(255,255,255,0.70);
+      transition: 0.18s ease;
     }
 
     .event-band:hover {
-      transform: translateY(-2px);
-      opacity: 0.98;
+      transform: translateY(-3px) scale(1.005);
+      filter: brightness(1.04);
+    }
+
+    .event-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(255,255,255,0.35), transparent 10%),
+        radial-gradient(circle at 86% 18%, rgba(255,255,255,0.22), transparent 10%),
+        radial-gradient(circle at 70% 76%, rgba(255,255,255,0.16), transparent 8%),
+        linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+      pointer-events: none;
     }
 
     .event-band::after {
-      content: "概要を見る";
+      content: "TAP";
       position: absolute;
       right: 18px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 900;
-      opacity: 0.92;
-      background: rgba(255,255,255,0.16);
-      padding: 8px 12px;
+      color: #fff;
+      background: rgba(255,255,255,0.18);
+      padding: 9px 12px;
       border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.25);
     }
 
     .event-red {
-      background: linear-gradient(135deg, #b91c1c, #ef4444, #f59e0b);
+      background: linear-gradient(135deg, #970000, #ff1f1f, #ff7a00);
     }
 
-    .event-blue {
-      background: linear-gradient(135deg, #1d4ed8, #2563eb, #60a5fa);
+    .event-gold {
+      background: linear-gradient(135deg, #8a4b00, #ffb300, #ffd54f);
     }
 
     .event-pink {
-      background: linear-gradient(135deg, #db2777, #ec4899, #f9a8d4);
+      background: linear-gradient(135deg, #ff6db1, #ff4f8b, #ffd3e7);
+      color: #7a0033;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.36);
     }
 
     .event-youtube {
-      background: linear-gradient(135deg, #b91c1c, #ef4444, #f97316);
+      background: linear-gradient(135deg, #8c0000, #ff0000, #ff6f00);
     }
 
     .event-x {
-      background: linear-gradient(135deg, #111827, #1f2937, #4b5563);
+      background: linear-gradient(135deg, #000000, #111827, #2563eb);
     }
 
     .event-title {
       font-size: clamp(24px, 4vw, 42px);
       font-weight: 900;
-      line-height: 1.2;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.18);
+      line-height: 1.15;
+      text-shadow:
+        0 2px 0 rgba(0,0,0,0.26),
+        0 5px 18px rgba(0,0,0,0.20);
+      position: relative;
+      z-index: 1;
     }
 
     .event-sub {
-      margin-top: 6px;
+      margin-top: 7px;
       font-size: 14px;
-      font-weight: 800;
-      opacity: 0.95;
+      font-weight: 900;
+      opacity: 0.96;
+      position: relative;
+      z-index: 1;
     }
 
     .event-details {
@@ -566,8 +700,8 @@
 
     .event-detail-card {
       scroll-margin-top: 90px;
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,248,235,0.96));
+      border: 2px solid rgba(255,193,7,0.18);
       border-radius: 24px;
       box-shadow: var(--shadow);
       padding: 24px 22px;
@@ -583,18 +717,21 @@
       font-weight: 900;
       margin-bottom: 12px;
       color: white;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     }
 
     .label-red { background: linear-gradient(135deg, #b91c1c, #ef4444); }
-    .label-blue { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+    .label-gold { background: linear-gradient(135deg, #a16207, #f59e0b); }
     .label-pink { background: linear-gradient(135deg, #db2777, #f472b6); }
     .label-youtube { background: linear-gradient(135deg, #b91c1c, #f97316); }
-    .label-x { background: linear-gradient(135deg, #111827, #4b5563); }
+    .label-x { background: linear-gradient(135deg, #111827, #2563eb); }
 
     .event-detail-card h3 {
       margin: 0 0 10px;
-      font-size: 28px;
-      line-height: 1.4;
+      font-size: 30px;
+      line-height: 1.35;
+      color: #7c2d12;
+      font-weight: 900;
     }
 
     .event-detail-card p {
@@ -603,6 +740,7 @@
       line-height: 1.95;
       font-size: 16px;
       white-space: pre-line;
+      font-weight: 700;
     }
 
     .contact-box {
@@ -610,8 +748,8 @@
       margin: 0 auto;
       padding: 28px 22px;
       border-radius: 24px;
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,249,255,0.95));
+      border: 2px solid rgba(96,165,250,0.18);
       box-shadow: var(--shadow);
       text-align: center;
     }
@@ -619,7 +757,7 @@
     .contact-mail {
       font-size: 22px;
       font-weight: 900;
-      color: var(--blue);
+      color: #1d4ed8;
       margin-bottom: 16px;
       word-break: break-all;
     }
@@ -628,16 +766,15 @@
       border: none;
       border-radius: 16px;
       padding: 16px 24px;
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
       color: white;
       font-size: 18px;
       font-weight: 900;
-      cursor: pointer;
       box-shadow: 0 12px 28px rgba(37,99,235,0.16);
-      transition: 0.18s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transition: 0.18s ease;
     }
 
     .contact-btn:hover {
@@ -651,12 +788,13 @@
     .footer-box {
       padding: 20px 18px;
       border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.82);
+      border: 2px solid rgba(255,193,7,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,248,235,0.88));
       color: var(--subtle);
       font-size: 14px;
       line-height: 1.8;
       box-shadow: var(--shadow);
+      font-weight: 700;
     }
 
     @media (max-width: 980px) {
@@ -684,11 +822,11 @@
 
     @media (max-width: 640px) {
       .container {
-        width: min(var(--maxw), calc(100% - 18px));
+        width: min(var(--maxw), calc(100% - 16px));
       }
 
       .hero-card {
-        padding: 34px 14px 22px;
+        padding: 30px 12px 22px;
       }
 
       .sub-actions,
@@ -704,7 +842,7 @@
       }
 
       .event-band {
-        padding-right: 118px;
+        padding-right: 86px;
       }
 
       .event-title {
@@ -715,15 +853,21 @@
       .step,
       .nav-card,
       .contact-box,
-      .prize-box,
+      .prize-super-wrap,
       .event-detail-card {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 14px;
+        padding-right: 14px;
       }
     }
   </style>
 </head>
 <body>
+
+  <div class="blink-banner-wrap">
+    <div class="container">
+      <div class="blink-banner">🔥 イベント開催中！賞金あり！今が参加チャンス！ 🔥</div>
+    </div>
+  </div>
 
   <header class="hero">
     <div class="container">
@@ -737,6 +881,7 @@
         </div>
 
         <div class="top-links">
+          <a class="mini-link" href="#rules">ルールへ</a>
           <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">登録ページ</a>
           <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank" rel="noopener noreferrer">取引ページ</a>
           <a class="mini-link" href="https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">ランキング</a>
@@ -753,11 +898,11 @@
           野球観戦の面白さに、駆け引きの楽しさを加えた新しい企画です。
         </p>
 
-        <div class="prize-box">
-          <h2 class="prize-title">🔥 賞金ありイベント開催中 🔥</h2>
-          <p class="prize-sub">
-            上位入賞者には賞金を用意。  
-            参加するだけで終わりではなく、しっかり上位を狙う価値があります。
+        <div class="prize-super-wrap">
+          <h2 class="prize-super-title">賞金ありイベント開催中！！</h2>
+          <p class="prize-super-sub">
+            上位入賞者には賞金を用意！  
+            参加するだけで終わりじゃない。しっかり上位を狙う価値あり！
           </p>
 
           <div class="prize-grid">
@@ -776,24 +921,28 @@
             <div class="prize-card">
               <div class="prize-rank">3〜8位</div>
               <div class="prize-amount">各500円</div>
-              <div class="prize-note">広めに入賞枠を設定。十分チャンスがあります。</div>
+              <div class="prize-note">入賞枠が広く、十分チャンスがあります。</div>
             </div>
           </div>
 
-          <p class="subscriber-note">
-            ※ 賞金額は、みるスタチャンネルの登録者数増加に応じて今後さらにアップしていく可能性があります。
-          </p>
+          <div class="subscriber-mega">
+            <p class="subscriber-mega-title">📈 みるスタチャンネル登録者が増えるほど、賞金増額の可能性あり！</p>
+            <p class="subscriber-mega-text">
+              チャンネル登録者数の増加に応じて、今後さらに賞金がパワーアップしていく可能性があります。  
+              つまり、早く参加しておくほど企画の盛り上がりを先取りできます。
+            </p>
+          </div>
         </div>
 
         <div class="main-actions">
           <a class="big-action big-register" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">
             今すぐ登録する
-            <small>まずはこちらから参加</small>
+            <small>まずはこちらから参加！</small>
           </a>
 
           <a class="big-action big-trade" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank" rel="noopener noreferrer">
             取引ページへ
-            <small>売買を始める方はこちら</small>
+            <small>売買を始める方はこちら！</small>
           </a>
         </div>
 
@@ -806,7 +955,7 @@
           <a class="nav-card" href="#rules">
             <div class="nav-card-number">1</div>
             <h3>ルール説明</h3>
-            <p>この企画の基本ルールと、順位の決まり方を確認できます。</p>
+            <p>この企画の基本ルールと順位の決まり方を確認できます。</p>
           </a>
 
           <a class="nav-card" href="#howto">
@@ -818,7 +967,7 @@
           <a class="nav-card" href="#events">
             <div class="nav-card-number">3</div>
             <h3>イベント</h3>
-            <p>開催中のボーナスイベントや限定特典をチェックできます。</p>
+            <p>開催中のボーナスイベントや限定特典を確認できます。</p>
           </a>
 
           <a class="nav-card" href="#contact">
@@ -902,27 +1051,27 @@
 
         <div class="events-wrap">
           <a class="event-band event-red" href="#event-first">
-            <div class="event-title">初回参入ボーナス</div>
-            <div class="event-sub">新規参加で 50pt プレゼント</div>
+            <div class="event-title">先着ボーナス ＋50pt</div>
+            <div class="event-sub">早期参加者向けのスタートダッシュ特典</div>
           </a>
 
-          <a class="event-band event-blue" href="#event-open">
-            <div class="event-title">開場記念ボーナス</div>
+          <a class="event-band event-gold" href="#event-open">
+            <div class="event-title">開場記念ボーナス ＋50pt</div>
             <div class="event-sub">参加しやすくなる記念ボーナス</div>
           </a>
 
           <a class="event-band event-pink" href="#event-hina">
-            <div class="event-title">ひな祭り5%還元キャンペーン</div>
+            <div class="event-title">ひな祭り 売却時 1.05倍</div>
             <div class="event-sub">期間限定のお得な還元イベント</div>
           </a>
 
           <a class="event-band event-youtube" href="#event-youtube">
-            <div class="event-title">YouTube登録ボーナス</div>
+            <div class="event-title">YouTube登録ボーナス ＋25pt</div>
             <div class="event-sub">チャンネル登録で追加特典</div>
           </a>
 
           <a class="event-band event-x" href="#event-x">
-            <div class="event-title">Xリツイートボーナス</div>
+            <div class="event-title">Xリツイートボーナス ＋25pt</div>
             <div class="event-sub">拡散参加でボーナス獲得</div>
           </a>
         </div>
@@ -930,51 +1079,51 @@
         <div class="event-details">
           <div class="event-detail-card" id="event-first">
             <div class="event-detail-label label-red">EVENT 01</div>
-            <h3>初回参入ボーナス</h3>
+            <h3>先着ボーナス ＋50pt</h3>
             <p>
-新規参加者向けの初回ボーナスです。
+先着参加者向けの特典です。
 
-初めて参加する方には、参入時に 50pt を付与します。
-参加しやすくするためのスタート特典で、最初の売買を始めやすくする目的があります。
+早めに参加してくれた方には、スタート時点で 50pt を付与します。
+早く始めるほど得をしやすく、初動から有利に動けるイベントです。
             </p>
           </div>
 
           <div class="event-detail-card" id="event-open">
-            <div class="event-detail-label label-blue">EVENT 02</div>
-            <h3>開場記念ボーナス</h3>
+            <div class="event-detail-label label-gold">EVENT 02</div>
+            <h3>開場記念ボーナス ＋50pt</h3>
             <p>
-開場記念として参加者にボーナスを付与するイベントです。
+開場記念として参加者に 50pt を付与するイベントです。
 
-開始直後の参加ハードルを下げ、より多くの方が楽しめるように設定しています。
-企画スタートの盛り上がりを後押しする記念特典です。
+企画スタート直後の参加ハードルを下げ、より多くの方が楽しめるように設定しています。
+参加しやすさを高める記念特典です。
             </p>
           </div>
 
           <div class="event-detail-card" id="event-hina">
             <div class="event-detail-label label-pink">EVENT 03</div>
-            <h3>ひな祭り5%還元キャンペーン</h3>
+            <h3>ひな祭り 売却時 1.05倍</h3>
             <p>
 ひな祭り記念の期間限定イベントです。
 
-対象期間中の取引では、5%還元の特典があります。
-通常よりもお得に参加できる特別キャンペーンで、短期的に動く面白さも高まります。
+対象期間中の売却時は 1.05倍 で反映されます。
+通常よりも利益を伸ばしやすく、短期勝負の面白さも高まる特別イベントです。
             </p>
           </div>
 
           <div class="event-detail-card" id="event-youtube">
             <div class="event-detail-label label-youtube">EVENT 04</div>
-            <h3>YouTube登録ボーナス</h3>
+            <h3>YouTube登録ボーナス ＋25pt</h3>
             <p>
 みるスタチャンネルを登録してくれた方向けのボーナスです。
 
-チャンネル登録者が増えるほど企画全体も盛り上がり、今後の賞金アップにもつながっていく可能性があります。
-企画を応援しながら、自分にもメリットがあるイベントです。
+チャンネル登録によって企画の認知が広がり、今後の賞金増額にもつながる可能性があります。
+企画を応援しながら、自分にも特典があるイベントです。
             </p>
           </div>
 
           <div class="event-detail-card" id="event-x">
             <div class="event-detail-label label-x">EVENT 05</div>
-            <h3>Xリツイートボーナス</h3>
+            <h3>Xリツイートボーナス ＋25pt</h3>
             <p>
 Xで対象投稿をリツイートしてくれた方向けのボーナスです。
 
