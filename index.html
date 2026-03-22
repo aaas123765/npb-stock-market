@@ -3,28 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NPB株式市場</title>
-  <meta name="description" content="プロ野球選手を株のように売買して競う参加型企画、NPB株式市場。登録・取引・ランキング確認はこちら。">
+  <title>プロ野球株式市場</title>
+  <meta name="description" content="プロ野球選手を株のように売買して競う参加型企画、プロ野球株式市場。登録・取引・ランキング・イベント情報はこちら。">
 
   <style>
     :root {
-      --bg-1: #081120;
-      --bg-2: #0f1c31;
-      --panel: rgba(15, 23, 42, 0.78);
-      --panel-strong: rgba(30, 41, 59, 0.92);
-      --line: rgba(148, 163, 184, 0.18);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --subtle: #94a3b8;
+      --bg1: #f5f9ff;
+      --bg2: #edf5ff;
+      --bg3: #ffffff;
+
+      --panel: rgba(255, 255, 255, 0.94);
+      --panel-strong: rgba(255, 255, 255, 0.98);
+      --line: rgba(148, 163, 184, 0.25);
+
+      --text: #0f172a;
+      --muted: #334155;
+      --subtle: #64748b;
+
       --blue: #2563eb;
-      --blue-hover: #1d4ed8;
-      --slate: #475569;
-      --slate-hover: #334155;
-      --gold: #fbbf24;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --maxw: 1120px;
+      --blue2: #60a5fa;
+      --green: #10b981;
+      --green2: #34d399;
+      --orange: #f59e0b;
+      --orange2: #fbbf24;
+      --red: #ef4444;
+      --red2: #f97316;
+      --pink: #ec4899;
+      --pink2: #f9a8d4;
+      --dark: #111827;
+      --dark2: #4b5563;
+
+      --shadow: 0 18px 40px rgba(37, 99, 235, 0.10);
+      --shadow-strong: 0 20px 50px rgba(15, 23, 42, 0.14);
+
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+
+      --maxw: 1160px;
     }
 
     * {
@@ -40,48 +56,25 @@
       font-family: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 30%),
-        radial-gradient(circle at top right, rgba(251, 191, 36, 0.16), transparent 22%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(251,191,36,0.10), transparent 24%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 48%, var(--bg3));
       min-height: 100vh;
       text-align: center;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .container {
-      width: min(var(--maxw), calc(100% - 32px));
+      width: min(var(--maxw), calc(100% - 28px));
       margin: 0 auto;
     }
 
     .hero {
-      position: relative;
-      padding: 32px 0 24px;
-      overflow: hidden;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(10px);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      width: 240px;
-      height: 240px;
-      background: rgba(37, 99, 235, 0.18);
-      top: -70px;
-      left: -60px;
-    }
-
-    .hero::after {
-      width: 220px;
-      height: 220px;
-      background: rgba(251, 191, 36, 0.12);
-      right: -40px;
-      top: 20px;
+      padding: 24px 0 18px;
     }
 
     .topbar {
@@ -91,12 +84,10 @@
       gap: 16px;
       padding: 14px 18px;
       border: 1px solid var(--line);
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(255,255,255,0.78);
       backdrop-filter: blur(10px);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      position: relative;
-      z-index: 2;
     }
 
     .brand {
@@ -107,28 +98,29 @@
     }
 
     .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--blue), #60a5fa);
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      font-weight: bold;
-      font-size: 18px;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      color: white;
+      font-weight: 900;
+      font-size: 20px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      box-shadow: 0 10px 24px rgba(37,99,235,0.18);
       flex-shrink: 0;
     }
 
     .brand-title {
-      font-size: 18px;
-      font-weight: 700;
       margin: 0;
+      font-size: 20px;
+      font-weight: 900;
     }
 
     .brand-sub {
+      margin: 2px 0 0;
       font-size: 12px;
       color: var(--subtle);
-      margin: 2px 0 0;
     }
 
     .top-links {
@@ -136,46 +128,36 @@
       gap: 10px;
       flex-wrap: wrap;
       justify-content: center;
-      position: relative;
-      z-index: 3;
     }
 
-    .mini-btn {
+    .mini-link {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.96);
       color: var(--muted);
       font-size: 13px;
+      font-weight: 800;
       padding: 10px 14px;
       border-radius: 999px;
-      cursor: pointer;
       transition: 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .mini-btn:hover {
+    .mini-link:hover {
+      transform: translateY(-1px);
+      background: #ffffff;
       color: var(--text);
-      border-color: rgba(148, 163, 184, 0.35);
-      background: rgba(255,255,255,0.06);
     }
 
     .hero-card {
-      margin-top: 20px;
-      padding: 56px 28px 34px;
+      margin-top: 18px;
+      padding: 42px 22px 28px;
       border-radius: 30px;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(30,41,59,0.85), rgba(15,23,42,0.92));
-      box-shadow: var(--shadow);
-      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(246,250,255,0.98));
+      box-shadow: var(--shadow-strong);
       overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(120deg, rgba(37,99,235,0.10), transparent 45%),
-        linear-gradient(300deg, rgba(251,191,36,0.08), transparent 35%);
-      pointer-events: none;
     }
 
     .badge {
@@ -184,119 +166,219 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.14);
-      color: #dbeafe;
-      border: 1px solid rgba(96, 165, 250, 0.2);
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 900;
       margin-bottom: 18px;
-      position: relative;
-      z-index: 2;
     }
 
     h1 {
-      position: relative;
-      z-index: 2;
       margin: 0;
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.05;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.08;
       letter-spacing: -0.02em;
     }
 
     .hero-lead {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
+      max-width: 800px;
       margin: 18px auto 0;
       font-size: clamp(16px, 2vw, 20px);
       line-height: 1.9;
       color: var(--muted);
     }
 
-    .hero-cta {
-      position: relative;
-      z-index: 3;
+    .prize-box {
+      margin: 26px auto 0;
+      max-width: 960px;
+      border-radius: 24px;
+      padding: 24px 20px;
+      background: linear-gradient(135deg, #fff7ed, #fef3c7, #fff7ed);
+      border: 2px solid #f59e0b;
+      box-shadow: 0 16px 36px rgba(245,158,11,0.18);
+    }
+
+    .prize-title {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      color: #b45309;
+    }
+
+    .prize-sub {
+      margin: 0 0 18px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #7c2d12;
+      font-weight: 700;
+    }
+
+    .prize-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .prize-card {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(245,158,11,0.30);
+      border-radius: 18px;
+      padding: 18px 14px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+    }
+
+    .prize-rank {
+      font-size: 14px;
+      color: #92400e;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .prize-amount {
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 900;
+      color: #dc2626;
+      margin-bottom: 6px;
+    }
+
+    .prize-note {
+      font-size: 14px;
+      color: #7c2d12;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .subscriber-note {
+      margin-top: 16px;
+      font-size: 15px;
+      color: #7c2d12;
+      line-height: 1.8;
+      font-weight: 800;
+    }
+
+    .main-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 360px));
+      justify-content: center;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .big-action {
+      border: none;
+      border-radius: 18px;
+      padding: 22px 18px;
+      color: white;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 1.3;
+      box-shadow: 0 16px 30px rgba(15,23,42,0.12);
+      transition: transform 0.18s ease, opacity 0.18s ease;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .big-action:hover {
+      transform: translateY(-2px) scale(1.01);
+      opacity: 0.98;
+    }
+
+    .big-register {
+      background: linear-gradient(135deg, var(--red), var(--red2));
+    }
+
+    .big-trade {
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+    }
+
+    .big-action small {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    .sub-actions {
       display: flex;
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 16px;
     }
 
-    .btn {
+    .sub-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       min-width: 180px;
-      padding: 15px 24px;
-      border-radius: 14px;
+      padding: 14px 20px;
       border: none;
+      border-radius: 14px;
       color: white;
-      font-weight: 700;
       font-size: 15px;
-      cursor: pointer;
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-      position: relative;
-      z-index: 3;
+      font-weight: 800;
+      transition: 0.18s ease;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.10);
     }
 
-    .btn:hover {
+    .sub-btn:hover {
       transform: translateY(-2px);
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue), #3b82f6);
+    .sub-green {
+      background: linear-gradient(135deg, var(--green), var(--green2));
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, var(--blue-hover), #2563eb);
+    .sub-orange {
+      background: linear-gradient(135deg, var(--orange), var(--orange2));
+      color: #1f2937;
     }
 
-    .btn-secondary {
-      background: linear-gradient(135deg, #475569, #64748b);
-    }
-
-    .btn-secondary:hover {
-      background: linear-gradient(135deg, var(--slate-hover), #475569);
-    }
-
-    .btn-accent {
-      background: linear-gradient(135deg, #0f766e, #14b8a6);
-    }
-
-    .btn-accent:hover {
-      background: linear-gradient(135deg, #0f766e, #0d9488);
-    }
-
-    .hero-stats {
-      position: relative;
-      z-index: 2;
+    .quick-nav {
+      margin-top: 26px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 34px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
     }
 
-    .stat {
-      padding: 18px 14px;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.04);
+    .nav-card {
+      text-align: left;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.94);
       border: 1px solid var(--line);
-      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
     }
 
-    .stat-number {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 6px;
+    .nav-card-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: var(--blue);
+      font-weight: 900;
+      margin-bottom: 12px;
     }
 
-    .stat-label {
-      font-size: 13px;
-      color: var(--subtle);
-      line-height: 1.6;
+    .nav-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .nav-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
     }
 
     .section {
@@ -304,58 +386,57 @@
     }
 
     .section-title {
-      font-size: clamp(28px, 4vw, 38px);
+      font-size: clamp(28px, 4vw, 40px);
       margin: 0 0 12px;
     }
 
     .section-sub {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 28px;
       color: var(--muted);
       line-height: 1.8;
       font-size: 16px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      text-align: left;
-      padding: 24px;
-      border-radius: var(--radius-xl);
-      background: var(--panel);
+    .rule-box {
+      padding: 26px;
+      border-radius: 24px;
+      background: var(--panel-strong);
       border: 1px solid var(--line);
-      backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
+      text-align: left;
     }
 
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 18px;
-      margin-bottom: 16px;
-      background: rgba(37,99,235,0.16);
-      color: #dbeafe;
-      border: 1px solid rgba(96,165,250,0.18);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 21px;
-    }
-
-    .card p {
+    .rule-list {
       margin: 0;
-      line-height: 1.9;
+      padding-left: 20px;
       color: var(--muted);
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .youtube-box {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fee2e2, #fff7ed);
+      border: 1px solid #fecaca;
+      text-align: left;
+    }
+
+    .youtube-title {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #b91c1c;
+      font-weight: 900;
+    }
+
+    .youtube-text {
+      margin: 0;
+      color: #7f1d1d;
+      line-height: 1.8;
       font-size: 15px;
+      font-weight: 800;
     }
 
     .steps {
@@ -367,7 +448,7 @@
 
     .step {
       padding: 26px 22px 22px;
-      border-radius: var(--radius-xl);
+      border-radius: 24px;
       background: var(--panel-strong);
       border: 1px solid var(--line);
       text-align: left;
@@ -381,9 +462,9 @@
       display: grid;
       place-items: center;
       font-size: 16px;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--gold), #f59e0b);
-      color: #1f2937;
+      font-weight: 900;
+      background: linear-gradient(135deg, #93c5fd, #60a5fa);
+      color: #0f172a;
       margin-bottom: 18px;
     }
 
@@ -399,78 +480,168 @@
       font-size: 15px;
     }
 
-    .cta-panel {
-      margin-top: 12px;
-      padding: 30px 24px;
-      border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(37,99,235,0.14), rgba(20,184,166,0.10)),
-        rgba(15,23,42,0.85);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .cta-title {
-      margin: 0 0 10px;
-      font-size: clamp(24px, 4vw, 34px);
-    }
-
-    .cta-text {
-      margin: 0 auto 24px;
-      max-width: 760px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .ranking-preview {
-      margin-top: 20px;
-      padding: 22px;
-      border-radius: 24px;
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .ranking-title {
-      margin: 0 0 16px;
-      font-size: 24px;
-    }
-
-    .ranking-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .events-wrap {
+      display: flex;
+      flex-direction: column;
       gap: 14px;
+      max-width: 980px;
+      margin: 0 auto;
     }
 
-    .rank-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
+    .event-band {
+      width: 100%;
       text-align: left;
+      border-radius: 18px;
+      padding: 18px 22px;
+      color: white;
+      cursor: pointer;
+      box-shadow: var(--shadow-strong);
+      transition: transform 0.18s ease, opacity 0.18s ease;
+      position: relative;
+      overflow: hidden;
+      display: block;
     }
 
-    .rank-badge {
-      display: inline-block;
-      margin-bottom: 10px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #0f172a;
-      background: #fbbf24;
-      padding: 6px 10px;
+    .event-band:hover {
+      transform: translateY(-2px);
+      opacity: 0.98;
+    }
+
+    .event-band::after {
+      content: "概要を見る";
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 13px;
+      font-weight: 900;
+      opacity: 0.92;
+      background: rgba(255,255,255,0.16);
+      padding: 8px 12px;
       border-radius: 999px;
     }
 
-    .rank-name {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
+    .event-red {
+      background: linear-gradient(135deg, #b91c1c, #ef4444, #f59e0b);
     }
 
-    .rank-value {
-      font-size: 15px;
+    .event-blue {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb, #60a5fa);
+    }
+
+    .event-pink {
+      background: linear-gradient(135deg, #db2777, #ec4899, #f9a8d4);
+    }
+
+    .event-youtube {
+      background: linear-gradient(135deg, #b91c1c, #ef4444, #f97316);
+    }
+
+    .event-x {
+      background: linear-gradient(135deg, #111827, #1f2937, #4b5563);
+    }
+
+    .event-title {
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.2;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.18);
+    }
+
+    .event-sub {
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      opacity: 0.95;
+    }
+
+    .event-details {
+      margin-top: 28px;
+      display: grid;
+      gap: 18px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .event-detail-card {
+      scroll-margin-top: 90px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 24px 22px;
+      text-align: left;
+    }
+
+    .event-detail-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .label-red { background: linear-gradient(135deg, #b91c1c, #ef4444); }
+    .label-blue { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+    .label-pink { background: linear-gradient(135deg, #db2777, #f472b6); }
+    .label-youtube { background: linear-gradient(135deg, #b91c1c, #f97316); }
+    .label-x { background: linear-gradient(135deg, #111827, #4b5563); }
+
+    .event-detail-card h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+
+    .event-detail-card p {
+      margin: 0;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.95;
+      font-size: 16px;
+      white-space: pre-line;
+    }
+
+    .contact-box {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 22px;
+      border-radius: 24px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .contact-mail {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 16px;
+      word-break: break-all;
+    }
+
+    .contact-btn {
+      border: none;
+      border-radius: 16px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: white;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(37,99,235,0.16);
+      transition: 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
     }
 
     .footer {
@@ -481,20 +652,22 @@
       padding: 20px 18px;
       border-radius: 20px;
       border: 1px solid var(--line);
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(255,255,255,0.82);
       color: var(--subtle);
       font-size: 14px;
       line-height: 1.8;
+      box-shadow: var(--shadow);
     }
 
-    @media (max-width: 920px) {
-      .grid-3,
-      .steps,
-      .hero-stats,
-      .ranking-grid {
+    @media (max-width: 980px) {
+      .prize-grid,
+      .quick-nav,
+      .steps {
         grid-template-columns: 1fr;
       }
+    }
 
+    @media (max-width: 760px) {
       .topbar {
         flex-direction: column;
       }
@@ -503,139 +676,193 @@
         justify-content: center;
         text-align: center;
       }
+
+      .main-actions {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
-      .hero {
-        padding-top: 18px;
+      .container {
+        width: min(var(--maxw), calc(100% - 18px));
       }
 
       .hero-card {
-        padding: 40px 18px 24px;
-        border-radius: 24px;
+        padding: 34px 14px 22px;
       }
 
-      .container {
-        width: min(var(--maxw), calc(100% - 20px));
+      .sub-actions,
+      .top-links {
+        flex-direction: column;
       }
 
-      .card,
-      .step,
-      .cta-panel,
-      .ranking-preview {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .btn,
-      .mini-btn {
+      .sub-btn,
+      .mini-link,
+      .contact-btn,
+      .big-action {
         width: 100%;
       }
 
-      .hero-cta,
-      .top-links {
-        flex-direction: column;
+      .event-band {
+        padding-right: 118px;
+      }
+
+      .event-title {
+        font-size: 26px;
+      }
+
+      .rule-box,
+      .step,
+      .nav-card,
+      .contact-box,
+      .prize-box,
+      .event-detail-card {
+        padding-left: 16px;
+        padding-right: 16px;
       }
     }
   </style>
 </head>
 <body>
+
   <header class="hero">
     <div class="container">
       <div class="topbar">
         <div class="brand">
-          <div class="brand-mark">NPB</div>
+          <div class="brand-mark">株</div>
           <div>
-            <p class="brand-title">NPB株式市場</p>
+            <p class="brand-title">プロ野球株式市場</p>
             <p class="brand-sub">Baseball × Stock Game Project</p>
           </div>
         </div>
 
         <div class="top-links">
-          <button class="mini-btn" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register')">登録ページ</button>
-          <button class="mini-btn" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec')">取引ページ</button>
-          <button class="mini-btn" onclick="openExternal('https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0')">ランキング</button>
+          <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">登録ページ</a>
+          <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank" rel="noopener noreferrer">取引ページ</a>
+          <a class="mini-link" href="https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">ランキング</a>
+          <a class="mini-link" href="#contact">お問い合わせ</a>
         </div>
       </div>
 
       <div class="hero-card">
         <div class="badge">参加型プロ野球ゲーム企画</div>
-        <h1>選手の活躍を読んで、<br>資産を増やせ。</h1>
+        <h1>プロ野球を、<br>“株”の視点で楽しもう。</h1>
         <p class="hero-lead">
-          NPB株式市場は、プロ野球選手を“株”のように売買して競う参加型企画です。
-          選手の活躍に応じて株価が変動し、参加者はポイントを使って売買。
-          野球を見る楽しさに、予想と戦略の面白さを掛け合わせたゲームです。
+          プロ野球株式市場は、選手を株のように売買して競う参加型企画です。
+          選手の活躍によって価値が変動し、予想と戦略で順位が変わる。
+          野球観戦の面白さに、駆け引きの楽しさを加えた新しい企画です。
         </p>
 
-        <div class="hero-cta">
-          <button class="btn btn-primary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register')">今すぐ参加する</button>
-          <button class="btn btn-secondary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec')">取引ページへ</button>
-          <button class="btn btn-accent" onclick="openExternal('https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0')">ランキングを見る</button>
+        <div class="prize-box">
+          <h2 class="prize-title">🔥 賞金ありイベント開催中 🔥</h2>
+          <p class="prize-sub">
+            上位入賞者には賞金を用意。  
+            参加するだけで終わりではなく、しっかり上位を狙う価値があります。
+          </p>
+
+          <div class="prize-grid">
+            <div class="prize-card">
+              <div class="prize-rank">1位</div>
+              <div class="prize-amount">5000円</div>
+              <div class="prize-note">優勝賞金。最上位を目指す価値があるメイン賞金です。</div>
+            </div>
+
+            <div class="prize-card">
+              <div class="prize-rank">2位</div>
+              <div class="prize-amount">2000円</div>
+              <div class="prize-note">最後まで上位争いに食い込めばしっかり狙える賞金です。</div>
+            </div>
+
+            <div class="prize-card">
+              <div class="prize-rank">3〜8位</div>
+              <div class="prize-amount">各500円</div>
+              <div class="prize-note">広めに入賞枠を設定。十分チャンスがあります。</div>
+            </div>
+          </div>
+
+          <p class="subscriber-note">
+            ※ 賞金額は、みるスタチャンネルの登録者数増加に応じて今後さらにアップしていく可能性があります。
+          </p>
         </div>
 
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number">01</div>
-            <div class="stat-label">登録して参加<br>すぐにスタート可能</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">02</div>
-            <div class="stat-label">選手の活躍で<br>株価が変動</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">03</div>
-            <div class="stat-label">ランキング上位を<br>目指して競う</div>
-          </div>
+        <div class="main-actions">
+          <a class="big-action big-register" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">
+            今すぐ登録する
+            <small>まずはこちらから参加</small>
+          </a>
+
+          <a class="big-action big-trade" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank" rel="noopener noreferrer">
+            取引ページへ
+            <small>売買を始める方はこちら</small>
+          </a>
+        </div>
+
+        <div class="sub-actions">
+          <a class="sub-btn sub-green" href="https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
+          <a class="sub-btn sub-orange" href="#events">イベントを見る</a>
+        </div>
+
+        <div class="quick-nav">
+          <a class="nav-card" href="#rules">
+            <div class="nav-card-number">1</div>
+            <h3>ルール説明</h3>
+            <p>この企画の基本ルールと、順位の決まり方を確認できます。</p>
+          </a>
+
+          <a class="nav-card" href="#howto">
+            <div class="nav-card-number">2</div>
+            <h3>参加方法</h3>
+            <p>登録から取引開始、ランキング確認までの流れをまとめています。</p>
+          </a>
+
+          <a class="nav-card" href="#events">
+            <div class="nav-card-number">3</div>
+            <h3>イベント</h3>
+            <p>開催中のボーナスイベントや限定特典をチェックできます。</p>
+          </a>
+
+          <a class="nav-card" href="#contact">
+            <div class="nav-card-number">4</div>
+            <h3>お問い合わせ</h3>
+            <p>不明点や相談がある場合はこちらから連絡できます。</p>
+          </a>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section">
+    <section class="section" id="rules">
       <div class="container">
-        <h2 class="section-title">この企画の魅力</h2>
+        <h2 class="section-title">ルール説明</h2>
         <p class="section-sub">
-          野球の試合結果を見るだけでなく、
-          「誰を買うか」「いつ売るか」という判断まで楽しめるのがこの企画の面白さです。
+          まずはこの企画の基本ルールを確認してください。
         </p>
 
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-icon">01</div>
-            <h3>成績が価値になる</h3>
-            <p>
-              選手の結果がそのまま株価に反映。
-              試合を見る視点が変わり、毎日のプロ野球がもっと面白くなります。
-            </p>
-          </div>
+        <div class="rule-box">
+          <ul class="rule-list">
+            <li>プロ野球選手を株のように売買して資産を増やしていく企画です。</li>
+            <li>選手の活躍によって価値が変動し、保有選手や売買タイミングで順位が変わります。</li>
+            <li>どの選手を買うか、いつ売るかという判断が非常に重要です。</li>
+            <li>最終的に資産の大きい参加者ほど上位入賞に近づきます。</li>
+          </ul>
 
-          <div class="card">
-            <div class="card-icon">02</div>
-            <h3>予想と駆け引き</h3>
-            <p>
-              好調選手に乗るか、割安な選手を狙うか。
-              自分だけの戦略で上位を目指せます。
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">03</div>
-            <h3>参加型で盛り上がる</h3>
-            <p>
-              登録・取引・ランキング確認までを一本化。
-              動画や企画との連動で継続的に楽しめます。
+          <div class="youtube-box">
+            <p class="youtube-title">ルールをもっとわかりやすく知りたい方へ</p>
+            <p class="youtube-text">
+              詳しいルール解説はYouTubeでわかりやすく説明しています。  
+              初参加の方は、まず動画を見てから参加すると理解しやすくおすすめです。
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="howto">
       <div class="container">
-        <h2 class="section-title">参加の流れ</h2>
+        <h2 class="section-title">参加方法</h2>
         <p class="section-sub">
-          初めてでも大丈夫です。必要なのは3ステップだけです。
+          初めてでも大丈夫です。参加までの流れは3ステップです。
         </p>
 
         <div class="steps">
@@ -643,8 +870,7 @@
             <div class="step-number">1</div>
             <h3>登録する</h3>
             <p>
-              まずは登録ページから参加。
-              ユーザー情報を入力して企画への参加準備を完了します。
+              まずは登録ページから参加します。必要情報を入力して参加準備を完了してください。
             </p>
           </div>
 
@@ -652,63 +878,126 @@
             <div class="step-number">2</div>
             <h3>取引する</h3>
             <p>
-              取引ページから好きな選手を売買。
-              今後伸びそうな選手を見極めて資産を増やしましょう。
+              取引ページで気になる選手を売買します。今後伸びそうな選手を見極めるのがポイントです。
             </p>
           </div>
 
           <div class="step">
             <div class="step-number">3</div>
-            <h3>順位を確認する</h3>
+            <h3>ランキングを見る</h3>
             <p>
-              スプレッドシートでランキングをチェック。
-              自分の現在地を見ながら次の一手を考えられます。
+              スプレッドシートで最新順位を確認できます。自分の現在地を見ながら次の戦略を立てましょう。
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="events">
       <div class="container">
-        <div class="ranking-preview">
-          <h2 class="ranking-title">ランキング上位イメージ</h2>
-          <div class="ranking-grid">
-            <div class="rank-card">
-              <div class="rank-badge">1位</div>
-              <div class="rank-name">TOP PLAYER</div>
-              <div class="rank-value">ランキングページで最新順位を確認</div>
-            </div>
-            <div class="rank-card">
-              <div class="rank-badge">2位</div>
-              <div class="rank-name">CHALLENGER</div>
-              <div class="rank-value">注目参加者が上位を争う</div>
-            </div>
-            <div class="rank-card">
-              <div class="rank-badge">3位</div>
-              <div class="rank-name">RISING</div>
-              <div class="rank-value">次の一手で順位変動の可能性あり</div>
-            </div>
+        <h2 class="section-title">イベント</h2>
+        <p class="section-sub">
+          開催中のイベント一覧です。帯をタップすると、そのイベント概要へ移動します。
+        </p>
+
+        <div class="events-wrap">
+          <a class="event-band event-red" href="#event-first">
+            <div class="event-title">初回参入ボーナス</div>
+            <div class="event-sub">新規参加で 50pt プレゼント</div>
+          </a>
+
+          <a class="event-band event-blue" href="#event-open">
+            <div class="event-title">開場記念ボーナス</div>
+            <div class="event-sub">参加しやすくなる記念ボーナス</div>
+          </a>
+
+          <a class="event-band event-pink" href="#event-hina">
+            <div class="event-title">ひな祭り5%還元キャンペーン</div>
+            <div class="event-sub">期間限定のお得な還元イベント</div>
+          </a>
+
+          <a class="event-band event-youtube" href="#event-youtube">
+            <div class="event-title">YouTube登録ボーナス</div>
+            <div class="event-sub">チャンネル登録で追加特典</div>
+          </a>
+
+          <a class="event-band event-x" href="#event-x">
+            <div class="event-title">Xリツイートボーナス</div>
+            <div class="event-sub">拡散参加でボーナス獲得</div>
+          </a>
+        </div>
+
+        <div class="event-details">
+          <div class="event-detail-card" id="event-first">
+            <div class="event-detail-label label-red">EVENT 01</div>
+            <h3>初回参入ボーナス</h3>
+            <p>
+新規参加者向けの初回ボーナスです。
+
+初めて参加する方には、参入時に 50pt を付与します。
+参加しやすくするためのスタート特典で、最初の売買を始めやすくする目的があります。
+            </p>
+          </div>
+
+          <div class="event-detail-card" id="event-open">
+            <div class="event-detail-label label-blue">EVENT 02</div>
+            <h3>開場記念ボーナス</h3>
+            <p>
+開場記念として参加者にボーナスを付与するイベントです。
+
+開始直後の参加ハードルを下げ、より多くの方が楽しめるように設定しています。
+企画スタートの盛り上がりを後押しする記念特典です。
+            </p>
+          </div>
+
+          <div class="event-detail-card" id="event-hina">
+            <div class="event-detail-label label-pink">EVENT 03</div>
+            <h3>ひな祭り5%還元キャンペーン</h3>
+            <p>
+ひな祭り記念の期間限定イベントです。
+
+対象期間中の取引では、5%還元の特典があります。
+通常よりもお得に参加できる特別キャンペーンで、短期的に動く面白さも高まります。
+            </p>
+          </div>
+
+          <div class="event-detail-card" id="event-youtube">
+            <div class="event-detail-label label-youtube">EVENT 04</div>
+            <h3>YouTube登録ボーナス</h3>
+            <p>
+みるスタチャンネルを登録してくれた方向けのボーナスです。
+
+チャンネル登録者が増えるほど企画全体も盛り上がり、今後の賞金アップにもつながっていく可能性があります。
+企画を応援しながら、自分にもメリットがあるイベントです。
+            </p>
+          </div>
+
+          <div class="event-detail-card" id="event-x">
+            <div class="event-detail-label label-x">EVENT 05</div>
+            <h3>Xリツイートボーナス</h3>
+            <p>
+Xで対象投稿をリツイートしてくれた方向けのボーナスです。
+
+企画の拡散に協力してくれた方へ還元するイベントです。
+参加者が増えることで企画全体がさらに面白くなっていくことも期待できます。
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="contact">
       <div class="container">
-        <div class="cta-panel">
-          <h2 class="cta-title">今すぐ参加して、上位を狙おう。</h2>
-          <p class="cta-text">
-            登録後すぐに取引を始められます。
-            推し選手で勝負するもよし、データ重視で戦うもよし。
-            あなたの読みと戦略で、NPB株式市場を勝ち抜いてください。
-          </p>
+        <h2 class="section-title">お問い合わせ</h2>
+        <p class="section-sub">
+          ご不明点・相談・参加に関する連絡はこちらからお願いします。
+        </p>
 
-          <div class="hero-cta">
-            <button class="btn btn-primary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register')">登録ページへ</button>
-            <button class="btn btn-secondary" onclick="openExternal('https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec')">取引ページへ</button>
-            <button class="btn btn-accent" onclick="openExternal('https://docs.google.com/spreadsheets/d/1gkVLyGNofqRc0cw5azGiMiI1q7G6qrgHci4zi7vkyAs/edit?gid=0#gid=0')">ランキングへ</button>
-          </div>
+        <div class="contact-box">
+          <div class="contact-mail">biaohuyuezhi566@gmail.com</div>
+          <a class="contact-btn" href="mailto:biaohuyuezhi566@gmail.com?subject=プロ野球株式市場についてのお問い合わせ">
+            お問い合わせメールを送る
+          </a>
         </div>
       </div>
     </section>
@@ -717,16 +1006,11 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-box">
-        ※ すべて外部ページに移動します。<br>
-        登録・取引・ランキングの最新情報は各リンク先で確認してください。
+        ※ 登録・取引・ランキングは外部ページに移動します。<br>
+        最新情報は各リンク先で確認してください。
       </div>
     </div>
   </footer>
 
-  <script>
-    function openExternal(url) {
-      window.open(url, "_blank");
-    }
-  </script>
 </body>
 </html>
