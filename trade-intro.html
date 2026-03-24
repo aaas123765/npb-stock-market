@@ -1,73 +1,244 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>取引前にお読みください</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>取引前にお読みください | プロ野球株式市場</title>
+  <meta name="description" content="プロ野球株式市場の取引前ガイドページです。">
 
-<style>
-body{
-  margin:0;
-  font-family:"Yu Gothic",sans-serif;
-  background:linear-gradient(180deg,#081120,#1a2540);
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  text-align:center;
-}
+  <style>
+    :root {
+      --bg1: #081120;
+      --bg2: #101a31;
+      --bg3: #1a2540;
+      --text: #f8fafc;
+      --muted: #dbe4f0;
+      --red: #ff4d4f;
+      --gold: #f5c451;
+      --gold2: #ffe08a;
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
 
-.container{
-  max-width:800px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-h1{
-  font-size:40px;
-  margin-bottom:20px;
-}
+    body {
+      margin: 0;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(245,196,81,0.10), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(255,77,79,0.08), transparent 18%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 45%, var(--bg3));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 14px;
+      text-align: center;
+    }
 
-.story{
-  font-size:18px;
-  line-height:2;
-  color:#e5e7eb;
-}
+    .page {
+      width: min(980px, 100%);
+    }
 
-.red{
-  color:#ff4d4f;
-  font-weight:bold;
-}
+    .top-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--gold2);
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+    }
 
-.btn{
-  display:inline-block;
-  margin-top:30px;
-  padding:14px 22px;
-  border-radius:14px;
-  background:#2563eb;
-  color:white;
-  font-weight:900;
-  text-decoration:none;
-}
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 42px 26px 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
 
-</style>
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 10%),
+        radial-gradient(circle at 85% 18%, rgba(245,196,81,0.10), transparent 10%);
+      pointer-events: none;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #111827;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: #fff7d6;
+      text-shadow:
+        0 2px 0 rgba(0,0,0,0.35),
+        0 8px 24px rgba(0,0,0,0.40);
+    }
+
+    .story {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: clamp(16px, 2vw, 21px);
+      line-height: 2.1;
+      color: var(--muted);
+      font-weight: 700;
+      min-height: 320px;
+    }
+
+    .red {
+      color: var(--red);
+      font-weight: 900;
+    }
+
+    .quote {
+      margin-top: 26px;
+      padding: 18px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(245,196,81,0.22);
+      background: rgba(245,196,81,0.06);
+      color: #fff2c4;
+      font-size: 15px;
+      line-height: 1.9;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 0.6s ease;
+    }
+
+    .actions.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 16px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 900;
+      transition: transform 0.18s ease;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.22);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-main {
+      color: white;
+      background: linear-gradient(135deg, #1d4ed8, #60a5fa);
+    }
+
+    .btn-sub {
+      color: #fff7d6;
+      background: linear-gradient(135deg, #7f1d1d, #b91c1c, #ef4444);
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 30px 16px 22px;
+      }
+
+      .story {
+        font-size: 16px;
+        line-height: 2;
+        min-height: 360px;
+      }
+
+      .btn {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page">
+    <a class="top-link" href="index.html">← トップに戻る</a>
 
-<div class="container">
+    <div class="card">
+      <div class="label">PROLOGUE</div>
 
-<h1>取引の前に</h1>
+      <h1>取引の前に</h1>
 
-<div id="story" class="story"></div>
+      <div class="story" id="story"></div>
 
-<a class="btn" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank">
-取引画面へ進む
-</a>
+      <div class="quote">
+        名を隠しても、輝きは隠せない。<br>
+        その特徴を見抜き、価値を信じ、未来に賭ける。<br>
+        ここから先は、見る者だけの戦場です。
+      </div>
 
-</div>
+      <div class="actions" id="actions">
+        <a
+          class="btn btn-main"
+          href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          取引画面へ進む
+        </a>
 
-<script>
-const text = `
+        <a class="btn btn-sub" href="index.html">
+          トップへ戻る
+        </a>
+      </div>
+
+      <div class="footer-note">
+        取引画面に進むと、言葉の意味がわかるはずです。
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const text = `
 多分あなたは取引時に困惑するでしょう。<br>
 なぜなら <span class="red">(選手名が書かれておらず特徴だけ書いてある)</span> からです。<br><br>
 
@@ -82,20 +253,22 @@ const text = `
 さぁみなさん、<span class="red">(億万長者への道)</span> を開きましょう！
 `;
 
-let i = 0;
-const speed = 35;
-const target = document.getElementById("story");
+    let i = 0;
+    const speed = 35;
+    const target = document.getElementById("story");
+    const actions = document.getElementById("actions");
 
-function typeWriter(){
-  if(i < text.length){
-    target.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
+    function typeWriter() {
+      if (i < text.length) {
+        target.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      } else {
+        actions.classList.add("show");
+      }
+    }
 
-window.onload = typeWriter;
-</script>
-
+    window.onload = typeWriter;
+  </script>
 </body>
 </html>
