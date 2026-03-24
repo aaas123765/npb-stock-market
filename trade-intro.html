@@ -18,9 +18,14 @@ body{
   text-align:center;
 }
 
+/* コンテナ */
+.container{
+  max-width:800px;
+}
+
 /* 必読 */
 .alert{
-  font-size:70px;
+  font-size:60px;
   font-weight:900;
   color:#ff4d4f;
   margin-bottom:30px;
@@ -34,25 +39,10 @@ body{
 
 /* 本文 */
 .story{
-  max-width:800px;
-  font-size:22px;
-  line-height:2.3;
-  min-height:300px;
-}
-
-/* 文字アニメーション */
-.char{
-  opacity:0;
-  transform:translateX(10px);
-  display:inline-block;
-  animation:fadeIn 0.4s forwards;
-}
-
-@keyframes fadeIn{
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
+  font-size:20px;
+  line-height:2.2;
+  margin-bottom:40px;
+  color:#e5e7eb;
 }
 
 /* 赤文字 */
@@ -61,29 +51,39 @@ body{
   font-weight:900;
 }
 
-/* ボタン */
+/* 取引ボタン */
 .trade-btn{
   display:inline-block;
-  padding:20px 40px;
-  font-size:26px;
+  padding:24px 50px;
+  font-size:30px;
   font-weight:900;
-  border-radius:20px;
+  border-radius:24px;
   text-decoration:none;
   color:white;
+
   background:linear-gradient(135deg,#2563eb,#60a5fa);
-  box-shadow:0 10px 30px rgba(37,99,235,0.5);
-  animation:btnPulse 1.5s infinite;
-  margin-bottom:40px;
+  
+  box-shadow:
+    0 0 20px rgba(96,165,250,0.6),
+    0 15px 40px rgba(37,99,235,0.6);
+
+  animation:btnPulse 1.2s infinite alternate;
+  transition:0.2s;
+}
+
+.trade-btn:hover{
+  transform:scale(1.1);
 }
 
 @keyframes btnPulse{
   from{transform:scale(1)}
-  to{transform:scale(1.08)}
+  to{transform:scale(1.12)}
 }
 
+/* 戻る */
 .back{
   display:inline-block;
-  margin-top:20px;
+  margin-top:25px;
   padding:14px 24px;
   border-radius:12px;
   background:#d90429;
@@ -96,71 +96,37 @@ body{
 
 <body>
 
-<div>
+<div class="container">
+
+<div class="alert">⚠ 必読 ⚠</div>
+
+<div class="story">
+多分あなたは取引時に困惑するでしょう。<br><br>
+
+なぜなら <span class="red">選手名が書かれておらず特徴だけ書いてある</span> からです。<br><br>
+
+これは我々の著作権という壮大な敵との戦いの証です。<br><br>
+
+なので、取引時は株選択の時に <span class="red">何の株か予想しながら</span> 買ってください。<br><br>
+
+<span class="red">プロ野球ガチ勢のあなたたちなら</span> わかるはず。<br><br>
+
+今は何を言ってるかわからないと思いますが、取引画面に行けばわかります。<br><br>
+
+チャンネルが大きくなればライセンス取得に一歩近づくのでよろしくお願いします。<br><br>
+
+さぁみなさん、<span class="red">億万長者への道</span> を開きましょう！
+</div>
 
 <a class="trade-btn" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank">
 ▶ 取引画面へ進む
 </a>
 
-<div class="alert">⚠ 必読 ⚠</div>
-
-<div id="story" class="story"></div>
+<br>
 
 <a class="back" href="index.html">トップへ戻る</a>
 
 </div>
-
-<script>
-
-const text = `
-多分あなたは取引時に困惑するでしょう。
-なぜなら (選手名が書かれておらず特徴だけ書いてある) からです。
-
-これは我々の著作権という壮大な敵との戦いの証です。
-なので、取引時は株選択の時に (何の株か予想しながら) 買ってください。
-
-(プロ野球ガチ勢のあなたたちなら) わかるはず。
-今は何を言ってるかわからないと思いますが、取引画面に行けばわかります。
-
-チャンネルが大きくなればライセンス取得に一歩近づくのでよろしくお願いします。
-
-さぁみなさん、(億万長者への道) を開きましょう！
-`;
-
-const story = document.getElementById("story");
-
-let i = 0;
-const speed = 30;
-
-function type(){
-
-  if(i < text.length){
-
-    let char = text[i];
-
-    if(char === "\n"){
-      story.innerHTML += "<br>";
-    }else{
-      const span = document.createElement("span");
-      span.className = "char";
-
-      // 赤文字処理
-      if(char === "（" || char === "("){
-        span.classList.add("red");
-      }
-
-      span.textContent = char;
-      story.appendChild(span);
-    }
-
-    i++;
-    setTimeout(type, speed);
-  }
-}
-
-window.onload = type;
-
-</script>
 
 </body>
 </html>
