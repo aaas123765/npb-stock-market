@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>注意事項 | プロ野球株式市場</title>
+<title>注意事項</title>
 
 <style>
 body{
@@ -18,33 +18,37 @@ body{
   text-align:center;
 }
 
-/* 必読タイトル */
+/* 必読 */
 .alert{
   font-size:60px;
   font-weight:900;
   color:#ff4d4f;
-  text-shadow:0 0 20px rgba(255,0,0,0.5);
-  margin-bottom:20px;
-  animation:pulse 1s infinite alternate;
+  margin-bottom:30px;
+  animation:pulse 1.2s infinite alternate;
 }
 
 @keyframes pulse{
   from{transform:scale(1)}
-  to{transform:scale(1.1)}
+  to{transform:scale(1.08)}
 }
 
 /* 本文 */
 .story{
   max-width:800px;
-  font-size:18px;
-  line-height:2;
-  color:#e5e7eb;
-  opacity:0;
-  transition:1s;
+  font-size:20px;
+  line-height:2.2;
 }
 
-.story.show{
+/* 行フェード */
+.line{
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.8s ease;
+}
+
+.line.show{
   opacity:1;
+  transform:translateY(0);
 }
 
 /* 赤文字 */
@@ -73,7 +77,7 @@ body{
 }
 
 .top-btn{
-  margin-bottom:30px;
+  margin-bottom:40px;
 }
 </style>
 </head>
@@ -99,7 +103,7 @@ body{
 
 <script>
 
-const textArray = [
+const lines = [
 '多分あなたは取引時に困惑するでしょう。',
 'なぜなら <span class="red">(選手名が書かれておらず特徴だけ書いてある)</span> からです。',
 '',
@@ -114,20 +118,30 @@ const textArray = [
 'さぁみなさん、<span class="red">(億万長者への道)</span> を開きましょう！'
 ];
 
-let line = 0;
-const speed = 15;
-const target = document.getElementById("story");
+const story = document.getElementById("story");
 
-function showText(){
-  if(line < textArray.length){
-    target.innerHTML += textArray[line] + "<br>";
-    target.classList.add("show");
-    line++;
-    setTimeout(showText, speed * 20);
+let i = 0;
+
+function showLine(){
+  if(i < lines.length){
+
+    const div = document.createElement("div");
+    div.className = "line";
+    div.innerHTML = lines[i];
+
+    story.appendChild(div);
+
+    setTimeout(() => {
+      div.classList.add("show");
+    }, 50);
+
+    i++;
+
+    setTimeout(showLine, 800); // ←ここで速度調整（今は“ちょうどいい映画感”）
   }
 }
 
-window.onload = showText;
+window.onload = showLine;
 
 </script>
 
