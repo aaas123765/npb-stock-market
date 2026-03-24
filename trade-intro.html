@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>取引前にお読みください</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Yu Gothic",sans-serif;
+  background:linear-gradient(180deg,#081120,#1a2540);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+}
+
+.container{
+  max-width:800px;
+}
+
+h1{
+  font-size:40px;
+  margin-bottom:20px;
+}
+
+.story{
+  font-size:18px;
+  line-height:2;
+  color:#e5e7eb;
+}
+
+.red{
+  color:#ff4d4f;
+  font-weight:bold;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 22px;
+  border-radius:14px;
+  background:#2563eb;
+  color:white;
+  font-weight:900;
+  text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>取引の前に</h1>
+
+<div id="story" class="story"></div>
+
+<a class="btn" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank">
+取引画面へ進む
+</a>
+
+</div>
+
+<script>
+const text = `
+多分あなたは取引時に困惑するでしょう。<br>
+なぜなら <span class="red">(選手名が書かれておらず特徴だけ書いてある)</span> からです。<br><br>
+
+これは我々の著作権という壮大な敵との戦いの証です。<br>
+なので、取引時は株選択の時に <span class="red">(何の株か予想しながら)</span> 買ってください。<br><br>
+
+<span class="red">(プロ野球ガチ勢のあなたたちなら)</span> わかるはず。<br>
+今は何を言ってるかわからないと思いますが、取引画面に行けばわかります。<br><br>
+
+チャンネルが大きくなればライセンス取得に一歩近づくのでよろしくお願いします。<br><br>
+
+さぁみなさん、<span class="red">(億万長者への道)</span> を開きましょう！
+`;
+
+let i = 0;
+const speed = 35;
+const target = document.getElementById("story");
+
+function typeWriter(){
+  if(i < text.length){
+    target.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+window.onload = typeWriter;
+</script>
+
+</body>
+</html>
