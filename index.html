@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>プロ野球株式市場</title>
-  <meta name="description" content="プロ野球株式市場の公式ページ。登録、取引、ランキング、イベント情報はこちら。">
+  <meta name="description" content="プロ野球株式市場の公式ページ。初回登録、取引、ランキング、イベント情報はこちら。">
 
   <style>
     :root {
@@ -231,6 +231,19 @@
       line-height: 1.8;
       color: var(--muted);
       font-weight: 700;
+    }
+
+    .notice-box {
+      max-width: 900px;
+      margin: 14px auto 0;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #fff8e7;
+      border: 1px solid #f3d38a;
+      color: #7c2d12;
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 800;
     }
 
     .prize-box {
@@ -513,6 +526,33 @@
       line-height: 1.8;
     }
 
+    .info-link-box {
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .info-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+    }
+
+    .youtube-link {
+      background: linear-gradient(135deg, #d90429, #ff5a00);
+    }
+
+    .x-link {
+      background: linear-gradient(135deg, #0f172a, #2563eb);
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -659,6 +699,14 @@
       z-index: 1;
     }
 
+    .event-links {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .contact-box {
       text-align: center;
     }
@@ -726,11 +774,11 @@
         width: min(var(--maxw), calc(100% - 14px));
       }
 
-      .top-links, .sub-actions {
+      .top-links, .sub-actions, .info-link-box, .event-links {
         flex-direction: column;
       }
 
-      .mini-link, .sub-btn, .contact-btn, .big-action {
+      .mini-link, .sub-btn, .contact-btn, .big-action, .info-link {
         width: 100%;
       }
 
@@ -770,9 +818,9 @@
         </div>
 
         <div class="top-links">
-          <a class="mini-link" href="#rules">ルール</a>
+          <a class="mini-link" href="#rules">ルール・参加方法</a>
           <a class="mini-link" href="#events">イベント</a>
-          <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">登録</a>
+          <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">初回登録</a>
           <a class="mini-link" href="trade-intro.html">取引</a>
           <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキング</a>
         </div>
@@ -781,7 +829,15 @@
       <div class="hero-card">
         <div class="badge">参加型プロ野球ゲーム企画</div>
         <h1>プロ野球を、<br>株の視点で楽しもう。</h1>
-        <p class="hero-lead">選手を売買して資産を増やし、ランキング上位を目指す企画です。</p>
+        <p class="hero-lead">選手の株を売買して資産を増やし、ランキング上位を目指す企画です。</p>
+
+        <div class="notice-box">
+          ※ このゲームはNPBとは一切関係ありません。
+        </div>
+
+        <div class="info-link-box">
+          <a class="info-link youtube-link" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">YouTubeでルール解説を見る</a>
+        </div>
 
         <div class="prize-box">
           <h2 class="prize-title">賞金ありイベント開催中！！</h2>
@@ -810,7 +866,7 @@
 
         <div class="main-actions">
           <a class="big-action big-register" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">
-            今すぐ登録
+            初回登録
             <small>参加はこちら</small>
           </a>
 
@@ -828,8 +884,8 @@
         <div class="quick-nav">
           <a class="nav-card" href="#rules">
             <div class="nav-num">1</div>
-            <h3>ルール</h3>
-            <p>まずは基本を確認</p>
+            <h3>ルール・参加方法</h3>
+            <p>基本ルールと参加の流れを確認</p>
           </a>
           <a class="nav-card" href="#howto">
             <div class="nav-num">2</div>
@@ -860,21 +916,25 @@
         <div class="rule-box">
           <div class="rule-simple">
             <div class="rule-item">
-              <h3>① 選手を買う</h3>
-              <p>好きな選手や伸びそうな選手を選んで買います。</p>
+              <h3>① 株を買う</h3>
+              <p>取引から好きな選手や活躍しそうな選手の株を買います。</p>
             </div>
             <div class="rule-item">
               <h3>② 活躍で変動</h3>
-              <p>選手の活躍で価値が上がったり下がったりします。</p>
+              <p>選手の活躍で株の価値が上がったり下がったりします。</p>
             </div>
             <div class="rule-item">
-              <h3>③ 資産で順位決定</h3>
-              <p>最終的に資産が多い人ほど上位になります。</p>
+              <h3>③ 順位で報酬</h3>
+              <p>1シーズン1ヶ月で順位が高い人が報酬をもらえます。</p>
             </div>
           </div>
 
           <div class="youtube-box">
             詳しいルール解説は YouTube でわかりやすく説明しています。初参加の方は動画を見てから始めるのがおすすめです。
+          </div>
+
+          <div class="info-link-box">
+            <a class="info-link youtube-link" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">YouTubeで詳しく見る</a>
           </div>
         </div>
       </div>
@@ -888,17 +948,17 @@
         <div class="steps">
           <div class="step">
             <div class="step-number">1</div>
-            <h3>登録</h3>
-            <p>まずは登録ページから参加します。</p>
+            <h3>初回登録</h3>
+            <p>まずは初回登録ページから参加します。</p>
             <div class="step-links">
-              <a class="step-link register" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">登録ページを開く</a>
+              <a class="step-link register" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">初回登録ページを開く</a>
             </div>
           </div>
 
           <div class="step">
             <div class="step-number">2</div>
             <h3>取引</h3>
-            <p>取引ページで選手を売買します。</p>
+            <p>取引ページで好きな選手や活躍しそうな選手の株を買います。</p>
             <div class="step-links">
               <a class="step-link trade" href="trade-intro.html">取引ページを開く</a>
             </div>
@@ -943,9 +1003,14 @@
           </a>
 
           <a class="event-band event-x" href="event-x.html">
-            <div class="event-title">Xリツイートキャンペーン</div>
-            <div class="event-sub">リツイートで +25pt</div>
+            <div class="event-title">Xフォロー&リツイートキャンペーン</div>
+            <div class="event-sub">フォロー&リツイートで +25pt</div>
           </a>
+        </div>
+
+        <div class="event-links">
+          <a class="info-link youtube-link" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">YouTubeを見る</a>
+          <a class="info-link x-link" href="YOUR_X_URL" target="_blank" rel="noopener noreferrer">Xを見る</a>
         </div>
       </div>
     </section>
