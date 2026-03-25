@@ -210,21 +210,8 @@
       font-weight: 700;
     }
 
-    .notice-box {
-      max-width: 900px;
-      margin: 14px auto 0;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: #fff8e7;
-      border: 1px solid #f3d38a;
-      color: #7c2d12;
-      font-size: 14px;
-      line-height: 1.8;
-      font-weight: 800;
-    }
-
     .main-nav-grid {
-      margin-top: 24px;
+      margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
@@ -232,9 +219,9 @@
     }
 
     .main-nav-btn {
-      min-height: 68px;
+      min-height: 74px;
       padding: 14px 14px;
-      border-radius: 18px;
+      border-radius: 20px;
       font-size: 15px;
       font-weight: 900;
       display: flex;
@@ -242,22 +229,113 @@
       justify-content: center;
       text-align: center;
       line-height: 1.45;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+      box-shadow:
+        0 10px 22px rgba(0,0,0,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.25);
       transition: 0.18s ease;
       color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-nav-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.28), transparent 16%),
+        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 45%);
+      pointer-events: none;
     }
 
     .main-nav-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.01);
     }
 
-    .nav-rule { background: linear-gradient(135deg, #475569, #64748b); }
-    .nav-register { background: linear-gradient(135deg, #d90429, #ff5a00); }
-    .nav-trade { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
-    .nav-rank { background: linear-gradient(135deg, #059669, #34d399); }
-    .nav-event { background: linear-gradient(135deg, #ffb703, #ffd166); color: #7c2d12; }
-    .nav-youtube { background: linear-gradient(135deg, #b80f1f, #ff2a2a); }
-    .nav-x { background: linear-gradient(135deg, #0f172a, #2563eb); }
+    .nav-rule {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.06) 0,
+          rgba(255,255,255,0.06) 8px,
+          transparent 8px,
+          transparent 16px
+        ),
+        linear-gradient(135deg, #475569, #64748b);
+    }
+
+    .nav-register {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        linear-gradient(135deg, #d90429, #ff5a00);
+    }
+
+    .nav-trade {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        linear-gradient(135deg, #1d4ed8, #60a5fa);
+    }
+
+    .nav-rank {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        linear-gradient(135deg, #059669, #34d399);
+    }
+
+    .nav-event {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.10) 0,
+          rgba(255,255,255,0.10) 8px,
+          transparent 8px,
+          transparent 16px
+        ),
+        linear-gradient(135deg, #ffb703, #ffd166);
+      color: #7c2d12;
+    }
+
+    .nav-youtube {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        linear-gradient(135deg, #b80f1f, #ff2a2a);
+    }
+
+    .nav-x {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        linear-gradient(135deg, #0f172a, #2563eb);
+    }
 
     .prize-box {
       margin-top: 24px;
@@ -426,6 +504,7 @@
       font-weight: 900;
       color: white;
       text-align: center;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     }
 
     .youtube-link {
@@ -715,18 +794,14 @@
         <h1>プロ野球を、<br>株の視点で楽しもう。</h1>
         <p class="hero-lead">選手の株を売買して資産を増やし、ランキング上位を目指す企画です。</p>
 
-        <div class="notice-box">
-          ※ このゲームはNPBとは一切関係ありません。
-        </div>
-
         <div class="main-nav-grid">
-          <a class="main-nav-btn nav-rule half-mobile" href="#rules">ルール・参加方法はこちら</a>
           <a class="main-nav-btn nav-register wide-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">初回登録はこちら</a>
           <a class="main-nav-btn nav-trade wide-mobile" href="trade-intro.html">取引はこちら</a>
           <a class="main-nav-btn nav-rank wide-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
           <a class="main-nav-btn nav-event half-mobile" href="#events">イベントはこちら</a>
-          <a class="main-nav-btn nav-youtube half-mobile" href="https://www.youtube.com/@%E3%81%BF%E3%82%8B%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB" target="_blank" rel="noopener noreferrer">みるスタチャンネル公式YouTube</a>
+          <a class="main-nav-btn nav-youtube half-mobile" href="https://www.youtube.com/@%E3%81%BF%E3%82%8B%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB" target="_blank" rel="noopener noreferrer">みるスタちゃんねる公式YouTube</a>
           <a class="main-nav-btn nav-x half-mobile" href="https://x.com/gwvtjd56p09259?s=21" target="_blank" rel="noopener noreferrer">X</a>
+          <a class="main-nav-btn nav-rule half-mobile" href="#rules">ルール・参加方法はこちら</a>
         </div>
 
         <div class="prize-box">
@@ -882,7 +957,10 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-box">※ 登録・取引・ランキングは外部ページに移動します。</div>
+      <div class="footer-box">
+        ※ このゲームはNPBとは一切関係ありません。<br>
+        ※ 登録・取引・ランキングは外部ページに移動します。
+      </div>
     </div>
   </footer>
 
