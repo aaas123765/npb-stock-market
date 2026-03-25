@@ -25,6 +25,8 @@
       --blue2: #60a5fa;
       --green1: #059669;
       --green2: #34d399;
+      --dark1: #0f172a;
+      --dark2: #2563eb;
 
       --line: rgba(23, 32, 51, 0.08);
       --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
@@ -126,7 +128,7 @@
     .topbar {
       margin-top: 14px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       gap: 14px;
       padding: 14px 16px;
@@ -168,31 +170,6 @@
       margin: 2px 0 0;
       font-size: 12px;
       color: var(--subtle);
-    }
-
-    .top-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .mini-link {
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 900;
-      color: #1f2937;
-      background: linear-gradient(180deg, #ffffff, #f6f9ff);
-      border: 1px solid rgba(29, 78, 216, 0.14);
-      box-shadow: 0 6px 16px rgba(29, 78, 216, 0.06);
-      transition: 0.18s ease;
-    }
-
-    .mini-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(29, 78, 216, 0.12);
-      border-color: rgba(29, 78, 216, 0.24);
     }
 
     .hero-card {
@@ -245,6 +222,42 @@
       line-height: 1.8;
       font-weight: 800;
     }
+
+    .main-nav-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .main-nav-btn {
+      min-height: 68px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      font-size: 15px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.45;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+      transition: 0.18s ease;
+      color: white;
+    }
+
+    .main-nav-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .nav-rule { background: linear-gradient(135deg, #475569, #64748b); }
+    .nav-register { background: linear-gradient(135deg, #d90429, #ff5a00); }
+    .nav-trade { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+    .nav-rank { background: linear-gradient(135deg, #059669, #34d399); }
+    .nav-event { background: linear-gradient(135deg, #ffb703, #ffd166); color: #7c2d12; }
+    .nav-youtube { background: linear-gradient(135deg, #b80f1f, #ff2a2a); }
+    .nav-x { background: linear-gradient(135deg, #0f172a, #2563eb); }
 
     .prize-box {
       margin-top: 24px;
@@ -324,138 +337,6 @@
       line-height: 1.8;
     }
 
-    .main-actions {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(240px, 360px));
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .big-action {
-      border-radius: 18px;
-      padding: 22px 16px;
-      color: white;
-      font-size: 28px;
-      font-weight: 900;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.14);
-      transition: 0.18s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .big-action:hover {
-      transform: translateY(-3px);
-    }
-
-    .big-register {
-      background: linear-gradient(135deg, #d90429, #ff5a00, #ff8a00);
-    }
-
-    .big-trade {
-      background: linear-gradient(135deg, #0038b8, #2563eb, #60a5fa);
-    }
-
-    .big-action small {
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .sub-actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .sub-btn {
-      min-width: 190px;
-      padding: 13px 18px;
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 900;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.10);
-      transition: 0.18s ease;
-    }
-
-    .sub-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .sub-green {
-      background: linear-gradient(135deg, var(--green1), var(--green2));
-      color: white;
-    }
-
-    .sub-orange {
-      background: linear-gradient(135deg, #ffe08a, #ffb703);
-      color: #7c2d12;
-    }
-
-    .quick-nav {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .nav-card {
-      padding: 16px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #ffffff, #f3f8ff);
-      border: 1px solid rgba(29, 78, 216, 0.12);
-      box-shadow: 0 10px 24px rgba(29, 78, 216, 0.08);
-      text-align: left;
-      transition: 0.18s ease;
-      position: relative;
-    }
-
-    .nav-card::after {
-      content: "▶";
-      position: absolute;
-      right: 14px;
-      top: 14px;
-      font-size: 14px;
-      font-weight: 900;
-      color: #1d4ed8;
-      opacity: 0.8;
-    }
-
-    .nav-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .nav-num {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      font-size: 14px;
-      font-weight: 900;
-      color: white;
-      background: linear-gradient(135deg, #1d4ed8, #60a5fa);
-      margin-bottom: 10px;
-    }
-
-    .nav-card h3 {
-      margin: 0 0 6px;
-      font-size: 19px;
-      color: #111827;
-    }
-
-    .nav-card p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
     .section {
       padding: 20px 0 52px;
     }
@@ -524,6 +405,7 @@
       color: #7f1d1d;
       font-weight: 800;
       line-height: 1.8;
+      text-align: center;
     }
 
     .info-link-box {
@@ -543,6 +425,7 @@
       font-size: 14px;
       font-weight: 900;
       color: white;
+      text-align: center;
     }
 
     .youtube-link {
@@ -749,23 +632,12 @@
     }
 
     @media (max-width: 960px) {
-      .prize-grid, .quick-nav, .steps, .rule-simple {
+      .prize-grid, .rule-simple, .steps {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 760px) {
-      .topbar {
-        flex-direction: column;
-      }
-
-      .brand {
-        justify-content: center;
-        text-align: center;
-      }
-
-      .main-actions {
-        grid-template-columns: 1fr;
+      .main-nav-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -774,19 +646,39 @@
         width: min(var(--maxw), calc(100% - 14px));
       }
 
-      .top-links, .sub-actions, .info-link-box, .event-links {
+      .info-link-box, .event-links {
         flex-direction: column;
       }
 
-      .mini-link, .sub-btn, .contact-btn, .big-action, .info-link {
+      .info-link {
         width: 100%;
+      }
+
+      .main-nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .main-nav-btn {
+        min-height: 58px;
+        font-size: 13px;
+        padding: 12px 10px;
+        border-radius: 16px;
+      }
+
+      .main-nav-btn.wide-mobile {
+        grid-column: span 2;
+      }
+
+      .main-nav-btn.half-mobile {
+        grid-column: span 1;
       }
 
       .event-band {
         padding-right: 78px;
       }
 
-      .hero-card, .prize-box, .rule-box, .step, .nav-card, .contact-box {
+      .hero-card, .prize-box, .rule-box, .step, .contact-box {
         padding-left: 14px;
         padding-right: 14px;
       }
@@ -816,14 +708,6 @@
             <p class="brand-sub">Baseball × Stock Game Project</p>
           </div>
         </div>
-
-        <div class="top-links">
-          <a class="mini-link" href="#rules">ルール・参加方法</a>
-          <a class="mini-link" href="#events">イベント</a>
-          <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">初回登録</a>
-          <a class="mini-link" href="trade-intro.html">取引</a>
-          <a class="mini-link" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキング</a>
-        </div>
       </div>
 
       <div class="hero-card">
@@ -835,8 +719,14 @@
           ※ このゲームはNPBとは一切関係ありません。
         </div>
 
-        <div class="info-link-box">
-          <a class="info-link youtube-link" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">YouTubeでルール解説を見る</a>
+        <div class="main-nav-grid">
+          <a class="main-nav-btn nav-rule half-mobile" href="#rules">ルール・参加方法はこちら</a>
+          <a class="main-nav-btn nav-register wide-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">初回登録はこちら</a>
+          <a class="main-nav-btn nav-trade wide-mobile" href="trade-intro.html">取引はこちら</a>
+          <a class="main-nav-btn nav-rank wide-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
+          <a class="main-nav-btn nav-event half-mobile" href="#events">イベントはこちら</a>
+          <a class="main-nav-btn nav-youtube half-mobile" href="https://www.youtube.com/@%E3%81%BF%E3%82%8B%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB" target="_blank" rel="noopener noreferrer">みるスタチャンネル公式YouTube</a>
+          <a class="main-nav-btn nav-x half-mobile" href="https://x.com/gwvtjd56p09259?s=21" target="_blank" rel="noopener noreferrer">X</a>
         </div>
 
         <div class="prize-box">
@@ -862,46 +752,6 @@
             <p class="boost-title">📈 登録者が増えると賞金アップの可能性！</p>
             <p class="boost-text">みるスタチャンネルの登録者数増加に応じて、今後さらに賞金が上がる可能性があります。</p>
           </div>
-        </div>
-
-        <div class="main-actions">
-          <a class="big-action big-register" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">
-            初回登録
-            <small>参加はこちら</small>
-          </a>
-
-          <a class="big-action big-trade" href="trade-intro.html">
-            取引ページ
-            <small>売買はこちら</small>
-          </a>
-        </div>
-
-        <div class="sub-actions">
-          <a class="sub-btn sub-green" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
-          <a class="sub-btn sub-orange" href="#events">イベントを見る</a>
-        </div>
-
-        <div class="quick-nav">
-          <a class="nav-card" href="#rules">
-            <div class="nav-num">1</div>
-            <h3>ルール・参加方法</h3>
-            <p>基本ルールと参加の流れを確認</p>
-          </a>
-          <a class="nav-card" href="#howto">
-            <div class="nav-num">2</div>
-            <h3>参加方法</h3>
-            <p>3ステップで参加</p>
-          </a>
-          <a class="nav-card" href="#events">
-            <div class="nav-num">3</div>
-            <h3>イベント</h3>
-            <p>開催中の特典一覧</p>
-          </a>
-          <a class="nav-card" href="#contact">
-            <div class="nav-num">4</div>
-            <h3>お問い合わせ</h3>
-            <p>不明点はこちら</p>
-          </a>
         </div>
       </div>
     </div>
@@ -934,7 +784,7 @@
           </div>
 
           <div class="info-link-box">
-            <a class="info-link youtube-link" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">YouTubeで詳しく見る</a>
+            <a class="info-link youtube-link" href="https://www.youtube.com/@%E3%81%BF%E3%82%8B%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB" target="_blank" rel="noopener noreferrer">YouTubeで詳しく見る</a>
           </div>
         </div>
       </div>
@@ -1009,8 +859,8 @@
         </div>
 
         <div class="event-links">
-          <a class="info-link youtube-link" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">YouTubeを見る</a>
-          <a class="info-link x-link" href="YOUR_X_URL" target="_blank" rel="noopener noreferrer">Xを見る</a>
+          <a class="info-link youtube-link" href="https://www.youtube.com/@%E3%81%BF%E3%82%8B%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB" target="_blank" rel="noopener noreferrer">イベント関連YouTubeを見る</a>
+          <a class="info-link x-link" href="https://x.com/gwvtjd56p09259?s=21" target="_blank" rel="noopener noreferrer">Xを見る</a>
         </div>
       </div>
     </section>
