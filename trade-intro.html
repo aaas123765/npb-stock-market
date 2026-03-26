@@ -18,12 +18,11 @@ body{
   text-align:center;
 }
 
-/* コンテナ */
 .container{
   max-width:800px;
+  padding:20px;
 }
 
-/* 必読 */
 .alert{
   font-size:60px;
   font-weight:900;
@@ -37,7 +36,6 @@ body{
   to{transform:scale(1.08)}
 }
 
-/* 本文 */
 .story{
   font-size:20px;
   line-height:2.2;
@@ -45,28 +43,24 @@ body{
   color:#e5e7eb;
 }
 
-/* 赤文字 */
 .red{
   color:#ff4d4f;
   font-weight:900;
 }
 
-/* 取引ボタン */
 .trade-btn{
   display:inline-block;
   padding:24px 50px;
   font-size:30px;
   font-weight:900;
   border-radius:24px;
-  text-decoration:none;
+  border:none;
   color:white;
-
+  cursor:pointer;
   background:linear-gradient(135deg,#2563eb,#60a5fa);
-  
   box-shadow:
     0 0 20px rgba(96,165,250,0.6),
     0 15px 40px rgba(37,99,235,0.6);
-
   animation:btnPulse 1.2s infinite alternate;
   transition:0.2s;
 }
@@ -80,7 +74,6 @@ body{
   to{transform:scale(1.12)}
 }
 
-/* 戻る */
 .back{
   display:inline-block;
   margin-top:25px;
@@ -98,35 +91,41 @@ body{
 
 <div class="container">
 
-<div class="alert">⚠ 必読 ⚠</div>
+  <div class="alert">⚠ 必読 ⚠</div>
 
-<div class="story">
-多分あなたは取引時に困惑するでしょう。<br><br>
+  <div class="story">
+    多分あなたは取引時に困惑するでしょう。<br><br>
 
-なぜなら <span class="red">選手名が書かれておらず特徴だけ書いてある</span> からです。<br><br>
+    なぜなら <span class="red">選手名が書かれておらず特徴だけ書いてある</span> からです。<br><br>
 
-これは我々の著作権という壮大な敵との戦いの証です。<br><br>
+    これは我々の著作権という壮大な敵との戦いの証です。<br><br>
 
-なので、取引時は株選択の時に <span class="red">何の株か予想しながら</span> 買ってください。<br><br>
+    なので、取引時は株選択の時に <span class="red">何の株か予想しながら</span> 買ってください。<br><br>
 
-<span class="red">プロ野球ガチ勢のあなたたちなら</span> わかるはず。<br><br>
+    <span class="red">プロ野球ガチ勢のあなたたちなら</span> わかるはず。<br><br>
 
-今は何を言ってるかわからないと思いますが、取引画面に行けばわかります。<br><br>
+    今は何を言ってるかわからないと思いますが、取引画面に行けばわかります。<br><br>
 
-チャンネルが大きくなればライセンス取得に一歩近づくのでよろしくお願いします。<br><br>
+    チャンネルが大きくなればライセンス取得に一歩近づくのでよろしくお願いします。<br><br>
 
-さぁみなさん、<span class="red">億万長者への道</span> を開きましょう！
+    さぁみなさん、<span class="red">億万長者への道</span> を開きましょう！
+  </div>
+
+  <button class="trade-btn" onclick="goTrade()">
+    ▶ 取引画面へ進む
+  </button>
+
+  <br>
+
+  <a class="back" href="index.html">トップへ戻る</a>
+
 </div>
 
-<a class="trade-btn" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec" target="_blank">
-▶ 取引画面へ進む
-</a>
-
-<br>
-
-<a class="back" href="index.html">トップへ戻る</a>
-
-</div>
+<script>
+function goTrade() {
+  window.location.href = "https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=trade";
+}
+</script>
 
 </body>
 </html>
