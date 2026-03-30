@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>プロ野球株式市場</title>
-  <meta name="description" content="プロ野球株式市場の公式ページ。初回登録、取引、ランキング、イベント情報はこちら。">
+  <meta name="description" content="プロ野球株式市場の公式ページ。初回登録、取引、マイページ、ランキング、イベント情報はこちら。">
 
   <style>
     :root {
@@ -25,8 +25,6 @@
       --blue2: #60a5fa;
       --green1: #059669;
       --green2: #34d399;
-      --dark1: #0f172a;
-      --dark2: #2563eb;
 
       --line: rgba(23, 32, 51, 0.08);
       --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
@@ -252,6 +250,22 @@
       transform: translateY(-2px) scale(1.01);
     }
 
+    .nav-mypage {
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.10) 0,
+          rgba(255,255,255,0.10) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        linear-gradient(135deg, #6d28d9, #8b5cf6, #c4b5fd);
+      box-shadow:
+        0 14px 30px rgba(109, 40, 217, 0.28),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+      font-size: 17px;
+    }
+
     .nav-rule {
       background:
         repeating-linear-gradient(
@@ -448,7 +462,7 @@
       font-weight: 700;
     }
 
-    .rule-box, .contact-box {
+    .rule-box, .contact-box, .homeadd-box {
       max-width: 940px;
       margin: 0 auto;
       padding: 22px 18px;
@@ -682,6 +696,19 @@
       justify-content: center;
     }
 
+    .homeadd-box p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 2;
+      color: #4b5563;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .homeadd-box strong {
+      color: #1d4ed8;
+    }
+
     .contact-box {
       text-align: center;
     }
@@ -766,11 +793,17 @@
         grid-column: span 1;
       }
 
+      .main-nav-btn.mypage-mobile {
+        grid-column: span 2;
+        min-height: 66px;
+        font-size: 16px;
+      }
+
       .event-band {
         padding-right: 78px;
       }
 
-      .hero-card, .prize-box, .rule-box, .step, .contact-box {
+      .hero-card, .prize-box, .rule-box, .step, .contact-box, .homeadd-box {
         padding-left: 14px;
         padding-right: 14px;
       }
@@ -808,6 +841,7 @@
         <p class="hero-lead">選手の株を売買して資産を増やし、ランキング上位を目指す企画です。</p>
 
         <div class="main-nav-grid">
+          <a class="main-nav-btn nav-mypage mypage-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=mypage" target="_blank" rel="noopener noreferrer">マイページを見る</a>
           <a class="main-nav-btn nav-register wide-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=register" target="_blank" rel="noopener noreferrer">初回登録はこちら</a>
           <a class="main-nav-btn nav-trade wide-mobile" href="trade-intro.html">取引はこちら</a>
           <a class="main-nav-btn nav-rank wide-mobile" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
@@ -910,8 +944,9 @@
           <div class="step">
             <div class="step-number">3</div>
             <h3>確認</h3>
-            <p>ランキングで現在順位をチェックします。1シーズンは1ヶ月です。</p>
+            <p>マイページで資産や保有株を確認し、ランキングもチェックします。1シーズンは1ヶ月です。</p>
             <div class="step-links">
+              <a class="step-link trade" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=mypage" target="_blank" rel="noopener noreferrer">マイページを見る</a>
               <a class="step-link rank" href="https://script.google.com/macros/s/AKfycbz3E_YWFyfMcTczPWV8nrD3hvpFbQFZL_t6y60YTKJYSKL89IBk99mCstcQcaWm-Vrd/exec?page=market" target="_blank" rel="noopener noreferrer">ランキングを見る</a>
             </div>
           </div>
@@ -958,6 +993,21 @@
       </div>
     </section>
 
+    <section class="section" id="home-add">
+      <div class="container">
+        <h2 class="section-title">ホーム画面に追加する方法</h2>
+        <p class="section-sub">よく使う方は追加しておくと便利です。</p>
+
+        <div class="homeadd-box">
+          <p>
+            iPhoneは <strong>Safari</strong>、Androidは <strong>Chrome</strong> でこのページを開いて、
+            メニューから <strong>「ホーム画面に追加」</strong> を押してください。<br>
+            追加しておくと、次回からアプリのようにすぐ開けます。
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contact">
       <div class="container">
         <h2 class="section-title">お問い合わせ</h2>
@@ -980,9 +1030,6 @@
         ※ 登録・取引・ランキングは外部ページに移動します。
       </div>
     </div>
-    <p style="margin-top:10px;font-weight:700;">
-登録後は <span style="color:#2563eb;">取引ボタン</span> から取引を始めましょう！
-</p>
   </footer>
 
 </body>
